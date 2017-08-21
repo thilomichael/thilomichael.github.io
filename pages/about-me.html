@@ -1,56 +1,110 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-        <meta charset="utf-8" />
+      <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
         <title>About me</title>
-        <link rel="stylesheet" href="/theme/css/main.css" />
+
+        <meta name="author" content="Thilo Michael">
+        <meta name="description" content="This is a blog and online business card of Thilo Michael.">
+
+        <meta name="viewport" content="width=device-width">
+        <link rel="canonical" href="http://thilo.co">
+
+        <link href="/favicon.png" rel="icon">
+        <link rel="stylesheet" href="/theme/css/screen.css" />
+
+        <link href='http://fonts.googleapis.com/css?family=Varela+Round' rel='stylesheet' type='text/css'>
 
         <!--[if IE]>
             <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
         <![endif]-->
 </head>
 
-<body id="index" class="home">
-        <header id="banner" class="body">
-                <h1><a href="/">Thilo's Blog </a></h1>
-                <nav><ul>
-    
-                        <li class="active"><a href="/pages/about-me.html">About me</a></li>
-                </ul>
-                </nav>
-<div id="submenu">
-                    <ul>
-                            <li><a href="/category/meta.html">Meta</a></li>
-                    </ul>
-                <div>
-        </header><!-- /#banner -->
-<section id="content" class="body">
-    <h1 class="entry-title">About me</h1>
-    
-    <h2>Thilo Michael</h2>
+<body>
+  <header style="font-family:'Varela Round',Helvetica,Arial,sans-serif;">
+      <div class="grid-wrapper">
+        <div class="grid">
+          <div class="grid__item two-fifths lap-four-sixths palm-one-whole">
+            <a href="/" class="site-title">Thilo Michael</a>
+          </div>
+          <div class="grid__item three-fifths lap-two-sixths palm-one-whole">
+          <nav>
+            <input type="checkbox" id="toggle">
+            <label for="toggle" class="toggle" data-open="Main Menu" data-close="Close Menu"></label>
+            <ul class="menu pull-right">
+                    <li class="active"><a href="/pages/about-me.html">About me</a></li>
+                    <li><a href="/pages/blog.html">Blog</a></li>
+            </ul>
+          </nav>
+        </div>
+      </div>
+    </div>
+  </header>
+
+<div class="grid-wrapper">
+  <div class="grid grid-center">
+    <div class="grid__item two-thirds lap-one-whole palm-one-whole">
+      <article class="page">
+        <header>
+          <h1 class="title indent">
+            About me
+          </h1>
+        </header>
+
+        <hr class="divider">
+
+        <h2>Thilo Michael</h2>
 <p>Hi, this is my site.</p>
-</section>
-        <section id="extras" class="body">
-                <div class="blogroll">
-                        <h2>blogroll</h2>
-                        <ul>
-                            <li><a href="https://www.tu-berlin.de/?tmichael">Me at TU Berlin</a></li>
-                        </ul>
-                </div><!-- /.blogroll -->
-                <div class="social">
-                        <h2>social</h2>
-                        <ul>
 
-                            <li><a href="https://twitter.com/uhlomuhlo">Twitter</a></li>
-                            <li><a href="https://github.com/Uhlo">GitHub</a></li>
-                            <li><a href="https://plus.google.com/+ThiloMichael">Google+</a></li>
-                        </ul>
-                </div><!-- /.social -->
-        </section><!-- /#extras -->
+      </article>
+    </div>
 
-        <footer id="contentinfo" class="body">
-                <p>Powered by <a href="http://getpelican.com/">Pelican</a>. Theme <a href="https://github.com/blueicefield/pelican-blueidea/">blueidea</a>, inspired by the default theme.</p>
-        </footer><!-- /#contentinfo -->
+<aside id="sidebar" class="grid__item one-third lap-one-whole palm-one-whole">
+  <div class="grid">
+    <section class="social aside-module grid__item one-whole lap-one-half">
+      <h1 class="title delta">
+        Follow me!
+      </h1>
+      <ul class="unstyled">
+        <li><a class="github" href="//github.com/uhlo"><i class="icon-github"></i> Github</a></li>
+        <li><a class="gplus" href="//plus.google.com/+ThiloMichael"><i class="icon-google-plus-sign"></i> Google+</a></li>
+        <li><a class="stackoverflow" href="//stackoverflow.com/users/1154311/uhlo"><i class="icon-stackexchange"></i> StackOverflow</a></li>
+        <li><a class="twitter" href="//twitter.com/uhlomuhlo"><i class="icon-twitter"></i> Twitter</a></li>
+      </ul>
+    </section>
+    <section id="recent-posts" class="aside-module grid__item one-whole lap-one-half">
+      <h1 class="title delta">Recent Posts</h1>
+      <ul class="divided">
+            <li class="post">
+              <a href="/hello-world.html">Hello World!</a>
+            </li>
+      </ul>
+    </section>
+    <section id="categories" class="aside-module grid__item one-whole lap-one-half">
+      <h1 class="title delta">Cagtegories</h1>
+      <ul class="divided">
+            <li class="post">
+              <a href="/category/meta.html">Meta</a>
+            </li>
+      </ul>
+    </section>
+  </div>
+</aside>
+  </div>
+</div>
+
+  <footer>
+    <div class="grid-wrapper">
+      <div class="grid">
+        <div class="grid__item">
+          <p class="copyright">
+            All content by Thilo Michael and licenced under <a href="//creativecommons.org/licenses/by-nc-sa/3.0/ie/">Creative Commons</a>.<br>
+          </p>
+        </div>
+      </div>
+    </div>
+  </footer>
 
 </body>
 </html>
