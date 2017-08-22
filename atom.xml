@@ -1,18 +1,138 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>Thilo Michael</title><link href="http://thilo.co/" rel="alternate"></link><link href="http://thilo.co/atom.xml" rel="self"></link><id>http://thilo.co/</id><updated>2017-08-21T09:22:00+02:00</updated><entry><title>Hello World!</title><link href="http://thilo.co/hello-world.html" rel="alternate"></link><published>2017-08-21T09:22:00+02:00</published><updated>2017-08-21T09:22:00+02:00</updated><author><name>Thilo Michael</name></author><id>tag:thilo.co,2017-08-21:/hello-world.html</id><summary type="html">&lt;h2&gt;This is my new blog&lt;/h2&gt;
-&lt;p&gt;This is the first entry in my new blog. Let's hope this goes well.
-For now, I just want to try out some syntax highlighting:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="k"&gt;for&lt;/span&gt; &lt;span class="n"&gt;i&lt;/span&gt; &lt;span class="ow"&gt;in&lt;/span&gt; &lt;span class="nb"&gt;list&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
-  &lt;span class="k"&gt;print&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;i&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Thilo Michael</title><link href="http://thilo.co/" rel="alternate"></link><link href="http://thilo.co/atom.xml" rel="self"></link><id>http://thilo.co/</id><updated>2017-08-22T10:53:00+02:00</updated><entry><title>Hello World 2.0!</title><link href="http://thilo.co/hello-world-20.html" rel="alternate"></link><published>2017-08-22T10:53:00+02:00</published><updated>2017-08-22T10:53:00+02:00</updated><author><name>Thilo Michael</name></author><id>tag:thilo.co,2017-08-22:/hello-world-20.html</id><summary type="html">&lt;p&gt;So this blog did not receive any love from me for quite some time. That's why I decided to revamp the whole thing and now it looks completely the same! Want to read me ramble about that topic for some paragraphs? Then read on...&lt;/p&gt;
+&lt;!-- more --&gt;
+
+&lt;h3&gt;That one time I tried to …&lt;/h3&gt;</summary><content type="html">&lt;p&gt;So this blog did not receive any love from me for quite some time. That's why I decided to revamp the whole thing and now it looks completely the same! Want to read me ramble about that topic for some paragraphs? Then read on...&lt;/p&gt;
+&lt;!-- more --&gt;
+
+&lt;h3&gt;That one time I tried to run a blog&lt;/h3&gt;
+&lt;p&gt;In the beginning, there was light. After that - in mid 2014 I think - I started this blog. And behold, I saw that all was well. I used &lt;a href="http://octopress.org/"&gt;Octopress&lt;/a&gt;, a Content Management Framework written in Ruby (Version 3 is promised to be coming since January 2015, so let's see how that will turn out). Octopress has nice tools for syntax highlighting and is basically a neat little static site generator extended by some blogging features.&lt;/p&gt;
+&lt;p&gt;But since Octopress is build in &lt;em&gt;Ruby&lt;/em&gt;, a language that I have a love-hate relationship with, it soon came to problems. Ruby sucks (or at least it sucked back in the day) when it comes to managing packages. Back in 2013/2014 I did a lot of stuff with Ruby and Rails and every few weeks, some &lt;em&gt;gem&lt;/em&gt; broke and I spend hours trying to fix that so I could continue to work.&lt;/p&gt;
+&lt;p&gt;The same thing happened with this blog. I could neither get Octopress to run, nor could I bring myself to debug it, mostly because I knew it would definitly break again.&lt;/p&gt;
+&lt;p&gt;Usually, the main apology for someone not blogging is the lack of time to write posts. But I was quite often willing to blog - I even set up a Wordpress blog. But the usual blogging systems are not right for me as they have all these features I don't use and are hard to customize.&lt;/p&gt;
+&lt;h3&gt;Riding the Pelican&lt;/h3&gt;
+&lt;p&gt;Now I took some time to set up a &lt;a href="http://getpelican.com/"&gt;Pelican&lt;/a&gt; blog. Which is basically the same thing, but with Python. It took some hours to get the old theme from Octopress running, but now everything (except comments and some minor other stuff) is working.&lt;/p&gt;
+&lt;p&gt;And I have to say, I'm quite happy about it. The only thing left is writing some blog posts. Let's see how this turns out...&lt;/p&gt;</content><category term="blog"></category><category term="meta"></category><category term="pelican"></category></entry><entry><title>U.N. Interstellar was her?</title><link href="http://thilo.co/un-interstellar-was-her.html" rel="alternate"></link><published>2014-11-09T21:57:36+01:00</published><updated>2014-11-09T21:57:36+01:00</updated><author><name>Thilo Michael</name></author><id>tag:thilo.co,2014-11-09:/un-interstellar-was-her.html</id><summary type="html">&lt;p&gt;So I've seen the new Christopher Nolan movie Interstellar yesterday! I had very mixed feelings about it and I will definitely see it again soon. The movie turned out pretty different that I had imagined and that threw me a bit off. This blog post however is not about the …&lt;/p&gt;</summary><content type="html">&lt;p&gt;So I've seen the new Christopher Nolan movie Interstellar yesterday! I had very mixed feelings about it and I will definitely see it again soon. The movie turned out pretty different that I had imagined and that threw me a bit off. This blog post however is not about the movie directly but about the music in it. So don't worry: no spoilers :)&lt;/p&gt;
+&lt;!-- more --&gt;
+
+&lt;h3&gt;The Film Score&lt;/h3&gt;
+&lt;p&gt;The film score was written by Hans Zimmer. Apparently there isn't a reasonably successful movie that Hans Zimmer didn't make to music to. The score was a bit repetitive but that's okay because I liked the main theme. It reminded me a bit of the main theme of Nolan's previous movie Inception.
+Anyways you can listen to an extended version of the main theme here:&lt;/p&gt;
+&lt;iframe width="560" height="315" src="//www.youtube.com/embed/wqnnRIwoxB8" frameborder="0" allowfullscreen&gt;&lt;/iframe&gt;
+
+&lt;p&gt;&lt;br/&gt;&lt;br/&gt;&lt;/p&gt;
+&lt;h3&gt;I know that from somewhere...&lt;/h3&gt;
+&lt;p&gt;While watching the movie I had these feeling that up until a certain point in the progression of the melody I recognized it from somewhere but in the cinema I thought it was a &lt;em&gt;deja entendu&lt;/em&gt;.&lt;/p&gt;
+&lt;p&gt;The next day I tried playing the melody on my e-piano and suddenly realize where my deja entendu came from: U.N. Owen was her? (or Flandre's Theme as many people call it).
+Flandre's Theme is played during the extra stage boss fight in the vertical-scrolling game &lt;a href="http://en.wikipedia.org/wiki/Touhou_Project"&gt;Touhou Project&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;I made a quick recording of my findings:&lt;/p&gt;
+&lt;iframe width="100%" height="450" scrolling="no" frameborder="no" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/176120105&amp;amp;auto_play=false&amp;amp;hide_related=false&amp;amp;show_comments=true&amp;amp;show_user=true&amp;amp;show_reposts=false&amp;amp;visual=true"&gt;&lt;/iframe&gt;
+
+&lt;p&gt;I know, I know. It is barely similar. I had fun anyway :)&lt;/p&gt;</content><category term="random"></category><category term="movies"></category><category term="music"></category></entry><entry><title>Compression Distance</title><link href="http://thilo.co/compression-distance.html" rel="alternate"></link><published>2014-10-19T00:36:13+02:00</published><updated>2014-10-19T00:36:13+02:00</updated><author><name>Thilo Michael</name></author><id>tag:thilo.co,2014-10-19:/compression-distance.html</id><summary type="html">&lt;p&gt;So I've recently looked into compression based distances as part of research for a masters course at the TU Berlin. What I found was a really interesting way of measuring distances between two textures (i.e. images).&lt;/p&gt;
+&lt;!-- more --&gt;
+
+&lt;h3&gt;Distances? Images!?&lt;/h3&gt;
+&lt;p&gt;Yep. In principle one could measure some distances between any two …&lt;/p&gt;</summary><content type="html">&lt;p&gt;So I've recently looked into compression based distances as part of research for a masters course at the TU Berlin. What I found was a really interesting way of measuring distances between two textures (i.e. images).&lt;/p&gt;
+&lt;!-- more --&gt;
+
+&lt;h3&gt;Distances? Images!?&lt;/h3&gt;
+&lt;p&gt;Yep. In principle one could measure some distances between any two objects. For example an acceptable distance measure between two images could be the difference in pixels or the difference in brightness. These distance measures all have their field of application but when &lt;em&gt;normal humans&lt;/em&gt; talk about similarity in images they mean something different. Computers in general however have a hard time figuring out what we humans consider &lt;em&gt;similar&lt;/em&gt;.&lt;/p&gt;
+&lt;h3&gt;Compression based distances&lt;/h3&gt;
+&lt;p&gt;One way to measure distances between objects in general is called compression distance. The way it works could be roughly described as&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;The more efficiently an algorithm can compress object A given object B the more similar the two objects are.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;So what does that mean? As a little example: Take the sentence A: &lt;em&gt;"I like ice cream."&lt;/em&gt; and compare it to the two sentences B: &lt;em&gt;"I like ice tea."&lt;/em&gt; and C: &lt;em&gt;"Has Anyone Really Been Far Even as Decided to Use Even Go Want to do Look More Like?"&lt;/em&gt;. Of course sentence A is more similar to B than C. But how could a computer measure that similarity? Easy! Just use a compression based distance.&lt;/p&gt;
+&lt;p&gt;When compressing &lt;em&gt;"I like ice cream."&lt;/em&gt; together with &lt;em&gt;"I like ice tea."&lt;/em&gt; a lot of information can be compressed (for example both sentences share the prefix &lt;em&gt;I like ice&lt;/em&gt; in common). Compressing sentence A and C together would have a lot less potential for compression (none of the words in sentence A are contained in C).&lt;/p&gt;
+&lt;p&gt;And that's the concept of compression based distances&lt;/p&gt;
+&lt;h3&gt;Campana-Keogh-1&lt;/h3&gt;
+&lt;p&gt;No I didn't just sneezed. Campana-Keogh-1 or CK-1 for short is a neat little algorithm for measuring the distance between two images. And because no one wants to write complicated algorithms this one is very simple.&lt;/p&gt;
+&lt;p&gt;The idea is to let someone else do all the work: MPEG-1. MPEG-1 is used for compressing videos and it is really good at it! One very cool feature of such video encoding algorithms is the predictive frame. When using predictive frames only the difference to the preceding image is stored. So when two following images in a video are &lt;em&gt;similar&lt;/em&gt; (which is often the case in movies), MPEG-1 only has to store the pixels that differ between the two images. Very neat, huh?&lt;/p&gt;
+&lt;p&gt;So what CK-1 is basically doing is to create two-frame videos. The smaller the resulting video-file the more similar the two images are. So the CK-1 algorithm basically just looks like this:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="k"&gt;function&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;distance &lt;span class="p"&gt;=&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nf"&gt;CK1Distance&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;x,y&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
+&lt;span class="w"&gt;  &lt;/span&gt;&lt;span class="n"&gt;distance&lt;/span&gt; &lt;span class="p"&gt;=&lt;/span&gt; &lt;span class="n"&gt;mpegSize&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;x&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="n"&gt;y&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="o"&gt;+&lt;/span&gt; &lt;span class="n"&gt;mpegSize&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;y&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="n"&gt;x&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
+  &lt;span class="n"&gt;distance&lt;/span&gt; &lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="p"&gt;=&lt;/span&gt; &lt;span class="n"&gt;mpegSize&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;x&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="n"&gt;x&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="o"&gt;+&lt;/span&gt; &lt;span class="n"&gt;mpegSize&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;y&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="n"&gt;y&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
+  &lt;span class="n"&gt;distance&lt;/span&gt; −&lt;span class="p"&gt;=&lt;/span&gt; &lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;span class="k"&gt;end&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 
-&lt;p&gt;Whoop!&lt;/p&gt;</summary><content type="html">&lt;h2&gt;This is my new blog&lt;/h2&gt;
-&lt;p&gt;This is the first entry in my new blog. Let's hope this goes well.
-For now, I just want to try out some syntax highlighting:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="k"&gt;for&lt;/span&gt; &lt;span class="n"&gt;i&lt;/span&gt; &lt;span class="ow"&gt;in&lt;/span&gt; &lt;span class="nb"&gt;list&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
-  &lt;span class="k"&gt;print&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;i&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;p&gt;The function &lt;code&gt;mpegSize(x,y)&lt;/code&gt; just returns the size of an MPEG-1 video with two frames &lt;code&gt;x&lt;/code&gt; and &lt;code&gt;y&lt;/code&gt;. Simple as that. But the results are very nice!&lt;/p&gt;
+&lt;h3&gt;Who is this Mulder guy?&lt;/h3&gt;
+&lt;p&gt;So I've been watching some x-files episodes lately and because I always like to do stuff while I'm binging a TV series I decided to test the CK-1 algorithm on Mulder.&lt;/p&gt;
+&lt;div style="width: 100%; text-algin: center;"&gt;
+  &lt;img src="/images/whackamulder.png" alt="Some Screenshots of persons in an x-files episode"/&gt;
+&lt;/div&gt;
+
+&lt;p&gt;So I took 4 screenshots of Mulder and 2 from other people in similar poses. Then I ran these images through my self-written little CK-1 Java program (because who the heck has a license for Matlab??) and these were the results:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;d(mulder1.png,mulder1.png) = 0.0
+d(mulder1.png,mulder2.png) = 0.6300178810907466
+d(mulder1.png,mulder3.png) = 0.7965330333401515
+d(mulder1.png,mulder4.png) = 0.9076955523269439
+d(mulder1.png,someone.png) = 1.0699117676216914
+d(mulder1.png,someone2.png) = 1.1179630519282
+
+d(mulder2.png,mulder2.png) = 0.0
+d(mulder2.png,mulder3.png) = 0.7866943866943867
+d(mulder2.png,mulder4.png) = 0.882641168355454
+d(mulder2.png,someone.png) = 1.0327691102945606
+d(mulder2.png,someone2.png) = 1.080532305920907
+
+d(mulder3.png,mulder3.png) = 0.0
+d(mulder3.png,mulder4.png) = 0.8846048223210854
+d(mulder3.png,someone.png) = 1.037555178268251
+d(mulder3.png,someone2.png) = 0.9344867708807609
+
+d(mulder4.png,mulder4.png) = 0.0
+d(mulder4.png,someone.png) = 1.0254100592831557
+d(mulder4.png,someone2.png) = 0.9044922962687953
+
+d(someone.png,someone.png) = 0.0
+d(someone.png,someone2.png) = 1.045421475903022
+
+d(someone2.png,someone2.png) = 0.0
 &lt;/pre&gt;&lt;/div&gt;
 
 
-&lt;p&gt;Whoop!&lt;/p&gt;</content><category term="blog"></category><category term="meta"></category><category term="pelican"></category></entry></feed>
+&lt;p&gt;Okay, &lt;code&gt;mulder1&lt;/code&gt; and &lt;code&gt;mulder2&lt;/code&gt; are almost the same images. Some basic histogram analysis would have revealed that these two images would be the most &lt;em&gt;similar&lt;/em&gt;. But the fact that &lt;code&gt;mulder3&lt;/code&gt; is more similar to the other Mulders than to the random persons (even if the margin is not that high) is pretty neat. The &lt;code&gt;mulder4&lt;/code&gt; images seems to be more similar to &lt;code&gt;someone2&lt;/code&gt; than to &lt;code&gt;mulder1&lt;/code&gt; but I think that's okay if we think about how simple and fast this algorithm is.&lt;/p&gt;
+&lt;h3&gt;Do some stuff!&lt;/h3&gt;
+&lt;p&gt;If you want to you can try my super cool CK-1 distance calculator on your own!
+Just download it from &lt;a href="/assets/CK1Java.jar"&gt;here&lt;/a&gt; and run it like this:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ java -jar CK1Java.jar /path/to/folder/with/imgs/
+ - OR -
+$ java -jar CK1Jar.jar img1.png img2.png
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;You just have to have &lt;code&gt;mencoder&lt;/code&gt; installed and available before running.&lt;/p&gt;</content><category term="programming"></category><category term="movies"></category></entry><entry><title>My Octopress Blog</title><link href="http://thilo.co/my-octopress-blog.html" rel="alternate"></link><published>2014-07-30T17:36:44+02:00</published><updated>2014-07-30T17:36:44+02:00</updated><author><name>Thilo Michael</name></author><id>tag:thilo.co,2014-07-30:/my-octopress-blog.html</id><summary type="html">&lt;p&gt;&lt;strong&gt;&lt;em&gt;UPDATE: My blog now runs on pelican. Ignore this post. Really.&lt;/em&gt;&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;So I have a new website/blog. It is made with the &lt;a href="http://octopress.org"&gt;octopress&lt;/a&gt; blogging framework. Octopress is rather different from all the content management systems and blogs I've seen before. Since version 2.0 it is based on &lt;a href="https://github.com/jekyll/jekyll"&gt;jekyll …&lt;/a&gt;&lt;/p&gt;</summary><content type="html">&lt;p&gt;&lt;strong&gt;&lt;em&gt;UPDATE: My blog now runs on pelican. Ignore this post. Really.&lt;/em&gt;&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;So I have a new website/blog. It is made with the &lt;a href="http://octopress.org"&gt;octopress&lt;/a&gt; blogging framework. Octopress is rather different from all the content management systems and blogs I've seen before. Since version 2.0 it is based on &lt;a href="https://github.com/jekyll/jekyll"&gt;jekyll&lt;/a&gt; and thus has a completetly different approach on content management and creation. It uses rake tasks to accomplish most of the work. Because octopress is a framework, the comfort for creating and managing content are rather sparse, but then again it is really powerfull if you know what you're doing.&lt;/p&gt;
+&lt;!-- more --&gt;
+
+&lt;h3&gt;CMF instead of CMS&lt;/h3&gt;
+&lt;p&gt;Octopress is a content management framework, not a content management system. What that means in practice is that you would create a new blog entry with a rake task on your commandline like this:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ rake new_post&lt;span class="o"&gt;[&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;My octopress blog&amp;quot;&lt;/span&gt;&lt;span class="o"&gt;]&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;This command simply creates a markdown-file with some attributes predefined:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;---
+layout: post
+title: &amp;quot;My octopress blog&amp;quot;
+date: 2014-07-30 17:36:44 +0200
+comments: true
+categories:
+---
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Below these attributes you can write your blog entry in markdown (with some cool octopress features included). If you want to &lt;em&gt;manage&lt;/em&gt; your posts you can add an &lt;code&gt;author&lt;/code&gt; or a &lt;code&gt;published&lt;/code&gt; field. Because it's markdown you can easily inject some HTML into your post.&lt;/p&gt;
+&lt;p&gt;That's it. No user management, no unnecessary back-end menus. I really like it :)&lt;/p&gt;
+&lt;h3&gt;The power of simplicity&lt;/h3&gt;
+&lt;p&gt;Because octopress consists of a few HTML files (with templating) here and a few sass files there you can easily change the layout and the pages to match how you want them to be.&lt;/p&gt;
+&lt;p&gt;I really like the idea to use a real files to store the blog posts. I don't really need a fancy SQL database to store information about the user, about plugins and about my posts. Things like comments can be injected with &lt;a href="https://disqus.com"&gt;disqus&lt;/a&gt;. You can even write your post offline and then upload them as soon as you are back online. It just makes everything so much simpler.&lt;/p&gt;
+&lt;p&gt;The only downside to this is that you need to deploy your blog every time you post a new entry. But if you host your little blog on &lt;a href="http://heroku.com"&gt;Heroku&lt;/a&gt; that is less of a problem.
+&lt;strong&gt;&lt;em&gt;Update: This blog is no longer running on Heroku&lt;/em&gt;&lt;/strong&gt;&lt;/p&gt;
+&lt;h3&gt;Not for everyone&lt;/h3&gt;
+&lt;p&gt;Octopress however is not suited for everyone. Multi-author blogs are supported, but writing my name into every post does not do it for most people. Implementing your own comment system is nearly impossible without setting up a database.&lt;/p&gt;
+&lt;p&gt;But octopress does not want to be for everyone. It describes itself as "a blogging framework for hackers". And that is exactly what it is. For people who just want to run their little blog, share their thoughts and ideas and also want to some really cool syntax highlight ;) its a really impressive alternative.&lt;/p&gt;</content><category term="blog"></category><category term="meta"></category><category term="octopress"></category></entry></feed>

@@ -3,7 +3,7 @@
 <head>
       <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-        <title>Thilo Michael - meta</title>
+        <title>My Octopress Blog</title>
 
         <meta name="author" content="Thilo Michael">
         <meta name="description" content="This is a blog and online business card of Thilo Michael.">
@@ -12,7 +12,7 @@
         <link rel="canonical" href="http://thilo.co">
 
         <link href="/favicon.png" rel="icon">
-        <link rel="stylesheet" href="../theme/css/screen.css" />
+        <link rel="stylesheet" href="./theme/css/screen.css" />
 
         <link href='http://fonts.googleapis.com/css?family=Varela+Round' rel='stylesheet' type='text/css'>
 
@@ -33,9 +33,9 @@
             <input type="checkbox" id="toggle">
             <label for="toggle" class="toggle" data-open="Main Menu" data-close="Close Menu"></label>
             <ul class="menu pull-right">
-                    <li><a href="../pages/about-me.html">About me</a></li>
-                    <li><a href="../pages/blog.html">Blog</a></li>
-                    <li><a href="../pages/publications.html">Publications</a></li>
+                    <li><a href="./pages/about-me.html">About me</a></li>
+                    <li><a href="./pages/blog.html">Blog</a></li>
+                    <li><a href="./pages/publications.html">Publications</a></li>
             </ul>
           </nav>
         </div>
@@ -43,52 +43,15 @@
     </div>
   </header>
 
-
 <div class="grid-wrapper">
   <div class="grid grid-center">
     <div class="grid__item two-thirds lap-one-whole palm-one-whole">
-      <article class="page">
+      <article class="post">
         <header>
           <h1 class="title indent">
-            Tag: meta
+            My Octopress Blog
           </h1>
-        </header>
-
-        <hr class="divider">
-
-
-    <article class="listing">
-      <header>
-        <h1 class="beta">
-          <a href="/hello-world-20.html">Hello World 2.0!</a>
-        </h1>
-        <div class="meta clearfix">
-          <time class="pull-left" datetime="2017-08-22 10:53:00+02:00"><i class="icon-calendar"></i> August 22, 2017</time>
-          <div class="pull-left" style="width:100%;">
-            <i class="icon-tags"></i>
-            <ul class="tags unstyled">
-              <li><a class='category' href='/tag/blog.html'>blog</a></li>
-              <li><a class='category' href='/tag/meta.html'>meta</a></li>
-              <li><a class='category' href='/tag/pelican.html'>pelican</a></li>
-            </ul>
-          </div>
-        </div>
-      </header>
-
-      <div class="entry-content clearfix">
-        <p><p>So this blog did not receive any love from me for quite some time. That's why I decided to revamp the whole thing and now it looks completely the same! Want to read me ramble about that topic for some paragraphs? Then read on...</p>
-</p>
-        <a class="btn pull-right" href="/hello-world-20.html">Read on &rarr;</a>
-      </div>
-    </article>
-    <hr>
-
-    <article class="listing">
-      <header>
-        <h1 class="beta">
-          <a href="/my-octopress-blog.html">My Octopress Blog</a>
-        </h1>
-        <div class="meta clearfix">
+          <div class="meta clearfix">
           <time class="pull-left" datetime="2014-07-30 17:36:44+02:00"><i class="icon-calendar"></i> July 30, 2014</time>
           <div class="pull-left" style="width:100%;">
             <i class="icon-tags"></i>
@@ -101,14 +64,37 @@
         </div>
       </header>
 
-      <div class="entry-content clearfix">
-        <p><p><strong><em>UPDATE: My blog now runs on pelican. Ignore this post. Really.</em></strong></p>
+        <p><strong><em>UPDATE: My blog now runs on pelican. Ignore this post. Really.</em></strong></p>
 <p>So I have a new website/blog. It is made with the <a href="http://octopress.org">octopress</a> blogging framework. Octopress is rather different from all the content management systems and blogs I've seen before. Since version 2.0 it is based on <a href="https://github.com/jekyll/jekyll">jekyll</a> and thus has a completetly different approach on content management and creation. It uses rake tasks to accomplish most of the work. Because octopress is a framework, the comfort for creating and managing content are rather sparse, but then again it is really powerfull if you know what you're doing.</p>
-</p>
-        <a class="btn pull-right" href="/my-octopress-blog.html">Read on &rarr;</a>
-      </div>
-    </article>
-    <hr>
+<!-- more -->
+
+<h3>CMF instead of CMS</h3>
+<p>Octopress is a content management framework, not a content management system. What that means in practice is that you would create a new blog entry with a rake task on your commandline like this:</p>
+<div class="highlight"><pre><span></span>$ rake new_post<span class="o">[</span><span class="s2">&quot;My octopress blog&quot;</span><span class="o">]</span>
+</pre></div>
+
+
+<p>This command simply creates a markdown-file with some attributes predefined:</p>
+<div class="highlight"><pre><span></span>---
+layout: post
+title: &quot;My octopress blog&quot;
+date: 2014-07-30 17:36:44 +0200
+comments: true
+categories:
+---
+</pre></div>
+
+
+<p>Below these attributes you can write your blog entry in markdown (with some cool octopress features included). If you want to <em>manage</em> your posts you can add an <code>author</code> or a <code>published</code> field. Because it's markdown you can easily inject some HTML into your post.</p>
+<p>That's it. No user management, no unnecessary back-end menus. I really like it :)</p>
+<h3>The power of simplicity</h3>
+<p>Because octopress consists of a few HTML files (with templating) here and a few sass files there you can easily change the layout and the pages to match how you want them to be.</p>
+<p>I really like the idea to use a real files to store the blog posts. I don't really need a fancy SQL database to store information about the user, about plugins and about my posts. Things like comments can be injected with <a href="https://disqus.com">disqus</a>. You can even write your post offline and then upload them as soon as you are back online. It just makes everything so much simpler.</p>
+<p>The only downside to this is that you need to deploy your blog every time you post a new entry. But if you host your little blog on <a href="http://heroku.com">Heroku</a> that is less of a problem.
+<strong><em>Update: This blog is no longer running on Heroku</em></strong></p>
+<h3>Not for everyone</h3>
+<p>Octopress however is not suited for everyone. Multi-author blogs are supported, but writing my name into every post does not do it for most people. Implementing your own comment system is nearly impossible without setting up a database.</p>
+<p>But octopress does not want to be for everyone. It describes itself as "a blogging framework for hackers". And that is exactly what it is. For people who just want to run their little blog, share their thoughts and ideas and also want to some really cool syntax highlight ;) its a really impressive alternative.</p>
 
       </article>
     </div>
@@ -130,16 +116,16 @@
       <h1 class="title delta">Recent Posts</h1>
       <ul class="divided">
             <li class="post">
-              <a href="../hello-world-20.html">Hello World 2.0!</a>
+              <a href="./hello-world-20.html">Hello World 2.0!</a>
             </li>
             <li class="post">
-              <a href="../un-interstellar-was-her.html">U.N. Interstellar was her?</a>
+              <a href="./un-interstellar-was-her.html">U.N. Interstellar was her?</a>
             </li>
             <li class="post">
-              <a href="../compression-distance.html">Compression Distance</a>
+              <a href="./compression-distance.html">Compression Distance</a>
             </li>
             <li class="post">
-              <a href="../my-octopress-blog.html">My Octopress Blog</a>
+              <a href="./my-octopress-blog.html">My Octopress Blog</a>
             </li>
       </ul>
     </section>
@@ -147,13 +133,13 @@
       <h1 class="title delta">Cagtegories</h1>
       <ul class="divided">
             <li class="post">
-              <a href="../category/meta.html">Meta</a>
+              <a href="./category/meta.html">Meta</a>
             </li>
             <li class="post">
-              <a href="../category/programming.html">Programming</a>
+              <a href="./category/programming.html">Programming</a>
             </li>
             <li class="post">
-              <a href="../category/random.html">Random</a>
+              <a href="./category/random.html">Random</a>
             </li>
       </ul>
     </section>
@@ -161,7 +147,6 @@
 </aside>
   </div>
 </div>
-
 
   <footer>
     <div class="grid-wrapper">

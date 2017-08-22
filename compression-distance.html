@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+      <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <title>Compression Distance</title>
+
+        <meta name="author" content="Thilo Michael">
+        <meta name="description" content="This is a blog and online business card of Thilo Michael.">
+
+        <meta name="viewport" content="width=device-width">
+        <link rel="canonical" href="http://thilo.co">
+
+        <link href="/favicon.png" rel="icon">
+        <link rel="stylesheet" href="./theme/css/screen.css" />
+
+        <link href='http://fonts.googleapis.com/css?family=Varela+Round' rel='stylesheet' type='text/css'>
+
+        <!--[if IE]>
+            <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+        <![endif]-->
+</head>
+
+<body>
+  <header style="font-family:'Varela Round',Helvetica,Arial,sans-serif;">
+      <div class="grid-wrapper">
+        <div class="grid">
+          <div class="grid__item two-fifths lap-four-sixths palm-one-whole">
+            <a href="/" class="site-title">Thilo Michael</a>
+          </div>
+          <div class="grid__item three-fifths lap-two-sixths palm-one-whole">
+          <nav>
+            <input type="checkbox" id="toggle">
+            <label for="toggle" class="toggle" data-open="Main Menu" data-close="Close Menu"></label>
+            <ul class="menu pull-right">
+                    <li><a href="./pages/about-me.html">About me</a></li>
+                    <li><a href="./pages/blog.html">Blog</a></li>
+                    <li><a href="./pages/publications.html">Publications</a></li>
+            </ul>
+          </nav>
+        </div>
+      </div>
+    </div>
+  </header>
+
+<div class="grid-wrapper">
+  <div class="grid grid-center">
+    <div class="grid__item two-thirds lap-one-whole palm-one-whole">
+      <article class="post">
+        <header>
+          <h1 class="title indent">
+            Compression Distance
+          </h1>
+          <div class="meta clearfix">
+          <time class="pull-left" datetime="2014-10-19 00:36:13+02:00"><i class="icon-calendar"></i> October 19, 2014</time>
+          <div class="pull-left" style="width:100%;">
+            <i class="icon-tags"></i>
+            <ul class="tags unstyled">
+              <li><a class='category' href='/tag/programming.html'>programming</a></li>
+              <li><a class='category' href='/tag/movies.html'>movies</a></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+
+        <p>So I've recently looked into compression based distances as part of research for a masters course at the TU Berlin. What I found was a really interesting way of measuring distances between two textures (i.e. images).</p>
+<!-- more -->
+
+<h3>Distances? Images!?</h3>
+<p>Yep. In principle one could measure some distances between any two objects. For example an acceptable distance measure between two images could be the difference in pixels or the difference in brightness. These distance measures all have their field of application but when <em>normal humans</em> talk about similarity in images they mean something different. Computers in general however have a hard time figuring out what we humans consider <em>similar</em>.</p>
+<h3>Compression based distances</h3>
+<p>One way to measure distances between objects in general is called compression distance. The way it works could be roughly described as</p>
+<blockquote>
+<p>The more efficiently an algorithm can compress object A given object B the more similar the two objects are.</p>
+</blockquote>
+<p>So what does that mean? As a little example: Take the sentence A: <em>"I like ice cream."</em> and compare it to the two sentences B: <em>"I like ice tea."</em> and C: <em>"Has Anyone Really Been Far Even as Decided to Use Even Go Want to do Look More Like?"</em>. Of course sentence A is more similar to B than C. But how could a computer measure that similarity? Easy! Just use a compression based distance.</p>
+<p>When compressing <em>"I like ice cream."</em> together with <em>"I like ice tea."</em> a lot of information can be compressed (for example both sentences share the prefix <em>I like ice</em> in common). Compressing sentence A and C together would have a lot less potential for compression (none of the words in sentence A are contained in C).</p>
+<p>And that's the concept of compression based distances</p>
+<h3>Campana-Keogh-1</h3>
+<p>No I didn't just sneezed. Campana-Keogh-1 or CK-1 for short is a neat little algorithm for measuring the distance between two images. And because no one wants to write complicated algorithms this one is very simple.</p>
+<p>The idea is to let someone else do all the work: MPEG-1. MPEG-1 is used for compressing videos and it is really good at it! One very cool feature of such video encoding algorithms is the predictive frame. When using predictive frames only the difference to the preceding image is stored. So when two following images in a video are <em>similar</em> (which is often the case in movies), MPEG-1 only has to store the pixels that differ between the two images. Very neat, huh?</p>
+<p>So what CK-1 is basically doing is to create two-frame videos. The smaller the resulting video-file the more similar the two images are. So the CK-1 algorithm basically just looks like this:</p>
+<div class="highlight"><pre><span></span><span class="k">function</span><span class="w"> </span>distance <span class="p">=</span><span class="w"> </span><span class="nf">CK1Distance</span><span class="p">(</span>x,y<span class="p">)</span><span class="w"></span>
+<span class="w">  </span><span class="n">distance</span> <span class="p">=</span> <span class="n">mpegSize</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">)</span> <span class="o">+</span> <span class="n">mpegSize</span><span class="p">(</span><span class="n">y</span><span class="p">,</span><span class="n">x</span><span class="p">);</span>
+  <span class="n">distance</span> <span class="o">/</span><span class="p">=</span> <span class="n">mpegSize</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">x</span><span class="p">)</span> <span class="o">+</span> <span class="n">mpegSize</span><span class="p">(</span><span class="n">y</span><span class="p">,</span><span class="n">y</span><span class="p">);</span>
+  <span class="n">distance</span> −<span class="p">=</span> <span class="mi">1</span><span class="p">;</span>
+<span class="k">end</span>
+</pre></div>
+
+
+<p>The function <code>mpegSize(x,y)</code> just returns the size of an MPEG-1 video with two frames <code>x</code> and <code>y</code>. Simple as that. But the results are very nice!</p>
+<h3>Who is this Mulder guy?</h3>
+<p>So I've been watching some x-files episodes lately and because I always like to do stuff while I'm binging a TV series I decided to test the CK-1 algorithm on Mulder.</p>
+<div style="width: 100%; text-algin: center;">
+  <img src="/images/whackamulder.png" alt="Some Screenshots of persons in an x-files episode"/>
+</div>
+
+<p>So I took 4 screenshots of Mulder and 2 from other people in similar poses. Then I ran these images through my self-written little CK-1 Java program (because who the heck has a license for Matlab??) and these were the results:</p>
+<div class="highlight"><pre><span></span>d(mulder1.png,mulder1.png) = 0.0
+d(mulder1.png,mulder2.png) = 0.6300178810907466
+d(mulder1.png,mulder3.png) = 0.7965330333401515
+d(mulder1.png,mulder4.png) = 0.9076955523269439
+d(mulder1.png,someone.png) = 1.0699117676216914
+d(mulder1.png,someone2.png) = 1.1179630519282
+
+d(mulder2.png,mulder2.png) = 0.0
+d(mulder2.png,mulder3.png) = 0.7866943866943867
+d(mulder2.png,mulder4.png) = 0.882641168355454
+d(mulder2.png,someone.png) = 1.0327691102945606
+d(mulder2.png,someone2.png) = 1.080532305920907
+
+d(mulder3.png,mulder3.png) = 0.0
+d(mulder3.png,mulder4.png) = 0.8846048223210854
+d(mulder3.png,someone.png) = 1.037555178268251
+d(mulder3.png,someone2.png) = 0.9344867708807609
+
+d(mulder4.png,mulder4.png) = 0.0
+d(mulder4.png,someone.png) = 1.0254100592831557
+d(mulder4.png,someone2.png) = 0.9044922962687953
+
+d(someone.png,someone.png) = 0.0
+d(someone.png,someone2.png) = 1.045421475903022
+
+d(someone2.png,someone2.png) = 0.0
+</pre></div>
+
+
+<p>Okay, <code>mulder1</code> and <code>mulder2</code> are almost the same images. Some basic histogram analysis would have revealed that these two images would be the most <em>similar</em>. But the fact that <code>mulder3</code> is more similar to the other Mulders than to the random persons (even if the margin is not that high) is pretty neat. The <code>mulder4</code> images seems to be more similar to <code>someone2</code> than to <code>mulder1</code> but I think that's okay if we think about how simple and fast this algorithm is.</p>
+<h3>Do some stuff!</h3>
+<p>If you want to you can try my super cool CK-1 distance calculator on your own!
+Just download it from <a href="/assets/CK1Java.jar">here</a> and run it like this:</p>
+<div class="highlight"><pre><span></span>$ java -jar CK1Java.jar /path/to/folder/with/imgs/
+ - OR -
+$ java -jar CK1Jar.jar img1.png img2.png
+</pre></div>
+
+
+<p>You just have to have <code>mencoder</code> installed and available before running.</p>
+
+      </article>
+    </div>
+
+<aside id="sidebar" class="grid__item one-third lap-one-whole palm-one-whole">
+  <div class="grid">
+    <section class="social aside-module grid__item one-whole lap-one-half">
+      <h1 class="title delta">
+        Follow me!
+      </h1>
+      <ul class="unstyled">
+        <li><a class="github" href="//github.com/uhlo"><i class="icon-github"></i> Github</a></li>
+        <li><a class="gplus" href="//plus.google.com/+ThiloMichael"><i class="icon-google-plus-sign"></i> Google+</a></li>
+        <li><a class="stackoverflow" href="//stackoverflow.com/users/1154311/uhlo"><i class="icon-stackexchange"></i> StackOverflow</a></li>
+        <li><a class="twitter" href="//twitter.com/uhlomuhlo"><i class="icon-twitter"></i> Twitter</a></li>
+      </ul>
+    </section>
+    <section id="recent-posts" class="aside-module grid__item one-whole lap-one-half">
+      <h1 class="title delta">Recent Posts</h1>
+      <ul class="divided">
+            <li class="post">
+              <a href="./hello-world-20.html">Hello World 2.0!</a>
+            </li>
+            <li class="post">
+              <a href="./un-interstellar-was-her.html">U.N. Interstellar was her?</a>
+            </li>
+            <li class="post">
+              <a href="./compression-distance.html">Compression Distance</a>
+            </li>
+            <li class="post">
+              <a href="./my-octopress-blog.html">My Octopress Blog</a>
+            </li>
+      </ul>
+    </section>
+    <section id="categories" class="aside-module grid__item one-whole lap-one-half">
+      <h1 class="title delta">Cagtegories</h1>
+      <ul class="divided">
+            <li class="post">
+              <a href="./category/meta.html">Meta</a>
+            </li>
+            <li class="post">
+              <a href="./category/programming.html">Programming</a>
+            </li>
+            <li class="post">
+              <a href="./category/random.html">Random</a>
+            </li>
+      </ul>
+    </section>
+  </div>
+</aside>
+  </div>
+</div>
+
+  <footer>
+    <div class="grid-wrapper">
+      <div class="grid">
+        <div class="grid__item">
+          <p class="copyright">
+            All content by Thilo Michael and licenced under <a href="//creativecommons.org/licenses/by-nc-sa/3.0/ie/">Creative Commons</a>.<br>
+          </p>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>

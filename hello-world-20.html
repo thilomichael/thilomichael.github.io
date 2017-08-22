@@ -3,7 +3,7 @@
 <head>
       <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-        <title>Thilo Michael - pelican</title>
+        <title>Hello World 2.0!</title>
 
         <meta name="author" content="Thilo Michael">
         <meta name="description" content="This is a blog and online business card of Thilo Michael.">
@@ -12,7 +12,7 @@
         <link rel="canonical" href="http://thilo.co">
 
         <link href="/favicon.png" rel="icon">
-        <link rel="stylesheet" href="../theme/css/screen.css" />
+        <link rel="stylesheet" href="./theme/css/screen.css" />
 
         <link href='http://fonts.googleapis.com/css?family=Varela+Round' rel='stylesheet' type='text/css'>
 
@@ -33,9 +33,9 @@
             <input type="checkbox" id="toggle">
             <label for="toggle" class="toggle" data-open="Main Menu" data-close="Close Menu"></label>
             <ul class="menu pull-right">
-                    <li><a href="../pages/about-me.html">About me</a></li>
-                    <li><a href="../pages/blog.html">Blog</a></li>
-                    <li><a href="../pages/publications.html">Publications</a></li>
+                    <li><a href="./pages/about-me.html">About me</a></li>
+                    <li><a href="./pages/blog.html">Blog</a></li>
+                    <li><a href="./pages/publications.html">Publications</a></li>
             </ul>
           </nav>
         </div>
@@ -43,26 +43,15 @@
     </div>
   </header>
 
-
 <div class="grid-wrapper">
   <div class="grid grid-center">
     <div class="grid__item two-thirds lap-one-whole palm-one-whole">
-      <article class="page">
+      <article class="post">
         <header>
           <h1 class="title indent">
-            Tag: pelican
+            Hello World 2.0!
           </h1>
-        </header>
-
-        <hr class="divider">
-
-
-    <article class="listing">
-      <header>
-        <h1 class="beta">
-          <a href="/hello-world-20.html">Hello World 2.0!</a>
-        </h1>
-        <div class="meta clearfix">
+          <div class="meta clearfix">
           <time class="pull-left" datetime="2017-08-22 10:53:00+02:00"><i class="icon-calendar"></i> August 22, 2017</time>
           <div class="pull-left" style="width:100%;">
             <i class="icon-tags"></i>
@@ -75,13 +64,17 @@
         </div>
       </header>
 
-      <div class="entry-content clearfix">
-        <p><p>So this blog did not receive any love from me for quite some time. That's why I decided to revamp the whole thing and now it looks completely the same! Want to read me ramble about that topic for some paragraphs? Then read on...</p>
-</p>
-        <a class="btn pull-right" href="/hello-world-20.html">Read on &rarr;</a>
-      </div>
-    </article>
-    <hr>
+        <p>So this blog did not receive any love from me for quite some time. That's why I decided to revamp the whole thing and now it looks completely the same! Want to read me ramble about that topic for some paragraphs? Then read on...</p>
+<!-- more -->
+
+<h3>That one time I tried to run a blog</h3>
+<p>In the beginning, there was light. After that - in mid 2014 I think - I started this blog. And behold, I saw that all was well. I used <a href="http://octopress.org/">Octopress</a>, a Content Management Framework written in Ruby (Version 3 is promised to be coming since January 2015, so let's see how that will turn out). Octopress has nice tools for syntax highlighting and is basically a neat little static site generator extended by some blogging features.</p>
+<p>But since Octopress is build in <em>Ruby</em>, a language that I have a love-hate relationship with, it soon came to problems. Ruby sucks (or at least it sucked back in the day) when it comes to managing packages. Back in 2013/2014 I did a lot of stuff with Ruby and Rails and every few weeks, some <em>gem</em> broke and I spend hours trying to fix that so I could continue to work.</p>
+<p>The same thing happened with this blog. I could neither get Octopress to run, nor could I bring myself to debug it, mostly because I knew it would definitly break again.</p>
+<p>Usually, the main apology for someone not blogging is the lack of time to write posts. But I was quite often willing to blog - I even set up a Wordpress blog. But the usual blogging systems are not right for me as they have all these features I don't use and are hard to customize.</p>
+<h3>Riding the Pelican</h3>
+<p>Now I took some time to set up a <a href="http://getpelican.com/">Pelican</a> blog. Which is basically the same thing, but with Python. It took some hours to get the old theme from Octopress running, but now everything (except comments and some minor other stuff) is working.</p>
+<p>And I have to say, I'm quite happy about it. The only thing left is writing some blog posts. Let's see how this turns out...</p>
 
       </article>
     </div>
@@ -103,16 +96,16 @@
       <h1 class="title delta">Recent Posts</h1>
       <ul class="divided">
             <li class="post">
-              <a href="../hello-world-20.html">Hello World 2.0!</a>
+              <a href="./hello-world-20.html">Hello World 2.0!</a>
             </li>
             <li class="post">
-              <a href="../un-interstellar-was-her.html">U.N. Interstellar was her?</a>
+              <a href="./un-interstellar-was-her.html">U.N. Interstellar was her?</a>
             </li>
             <li class="post">
-              <a href="../compression-distance.html">Compression Distance</a>
+              <a href="./compression-distance.html">Compression Distance</a>
             </li>
             <li class="post">
-              <a href="../my-octopress-blog.html">My Octopress Blog</a>
+              <a href="./my-octopress-blog.html">My Octopress Blog</a>
             </li>
       </ul>
     </section>
@@ -120,13 +113,13 @@
       <h1 class="title delta">Cagtegories</h1>
       <ul class="divided">
             <li class="post">
-              <a href="../category/meta.html">Meta</a>
+              <a href="./category/meta.html">Meta</a>
             </li>
             <li class="post">
-              <a href="../category/programming.html">Programming</a>
+              <a href="./category/programming.html">Programming</a>
             </li>
             <li class="post">
-              <a href="../category/random.html">Random</a>
+              <a href="./category/random.html">Random</a>
             </li>
       </ul>
     </section>
@@ -134,7 +127,6 @@
 </aside>
   </div>
 </div>
-
 
   <footer>
     <div class="grid-wrapper">
