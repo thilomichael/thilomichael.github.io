@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Thilo Michael</title><link href="http://thilo.co/" rel="alternate"></link><link href="http://thilo.co/atom.xml" rel="self"></link><id>http://thilo.co/</id><updated>2017-08-21T09:22:00+02:00</updated><entry><title>Hello World!</title><link href="http://thilo.co/hello-world.html" rel="alternate"></link><published>2017-08-21T09:22:00+02:00</published><updated>2017-08-21T09:22:00+02:00</updated><author><name>Thilo Michael</name></author><id>tag:thilo.co,2017-08-21:/hello-world.html</id><summary type="html">&lt;h2&gt;This is my new blog&lt;/h2&gt;
+&lt;p&gt;This is the first entry in my new blog. Let's hope this goes well.
+For now, I just want to try out some syntax highlighting:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="k"&gt;for&lt;/span&gt; &lt;span class="n"&gt;i&lt;/span&gt; &lt;span class="ow"&gt;in&lt;/span&gt; &lt;span class="nb"&gt;list&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+  &lt;span class="k"&gt;print&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;i&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Whoop!&lt;/p&gt;</summary><content type="html">&lt;h2&gt;This is my new blog&lt;/h2&gt;
+&lt;p&gt;This is the first entry in my new blog. Let's hope this goes well.
+For now, I just want to try out some syntax highlighting:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="k"&gt;for&lt;/span&gt; &lt;span class="n"&gt;i&lt;/span&gt; &lt;span class="ow"&gt;in&lt;/span&gt; &lt;span class="nb"&gt;list&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+  &lt;span class="k"&gt;print&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;i&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Whoop!&lt;/p&gt;</content><category term="blog"></category><category term="meta"></category><category term="pelican"></category></entry></feed>
