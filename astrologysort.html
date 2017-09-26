@@ -80,19 +80,19 @@
 <p>While i liked the idea of using a long proven "<em>alternative source of truth</em>" (as I like to call it) for sorting, I didn't quite understand the predictions of this user concerning the runtime.</p>
 <p>So I dusted off my vim and got to work.</p>
 <h2>Some Research</h2>
-<p>While thinking about how to realize an AstrologySort-algorithm, the first doubts in this project arose: <em>What is astrology? How could it ever be used to sort a list of numbers? How do I exit vim?</em></p>
-<p>So, after I killed my terminal, I reflected on my scientific education and went straight to the most trustworthy source I know: Google. The complicated and precisely targeted search term "Astrology" revealed all the information needed: <a href="https://astrology.com">astrology.com</a></p>
+<p>While thinking about how to realize an AstrologySort-algorithm, my first doubts in this project arose: <em>What is astrology? How could it ever be used to sort a list of numbers? How do I exit vim?</em></p>
+<p>So, after I killed my terminal, I reflected on my scientific education and went straight to the most trustworthy source I know: Google. The complicated and precisely targeted search term "Astrology" revealed all the information needed: <a href="https://astrology.com">astrology.com</a>.</p>
 <p><a href="https://astrology.com"><img alt="A screenshot of astrology.com" src="images/astrologycom_screenshot.png"></a></p>
-<p>Almost instantly I spotted the "<em>Numerology</em>"-section of the website. I simply knew that this was the missing key to all my questions (except the one about how to exit vim).</p>
-<p>But something still didn't feel quite right. Not scientific enough. What I needed was hard evidence, the kind that could be cited in papers and stuff. So I looked up "<em>Numerology</em>" in Wikipedia. And there it was: <a href="https://en.wikipedia.org/wiki/Numerology">A whole Wikipedia entry on this exact topic.</a></p>
+<p>Almost instantly I spotted the "<em>Numerology</em>"-section of the website. I simply <em>knew</em> that this was the missing key to all my questions (except the one about how to exit vim).</p>
+<p>But something still didn't feel quite right. Not scientific enough. What I needed was <em>hard evidence</em>, the kind that could be cited in papers and stuff. So I looked up "<em>Numerology</em>" in Wikipedia. And there it was: <a href="https://en.wikipedia.org/wiki/Numerology">A whole Wikipedia entry on this exact topic.</a> </p>
 <blockquote>
 <p>It has its own Wikipedia entry, therefore it must be real.</p>
 </blockquote>
 <p>With this, I was ready to end the research intensive part of this project.</p>
 <h2>The Divine Source of Numbers</h2>
-<p>The most well known tool of applied Numerology is of course the "<em>Daily Karmic Number</em>". I don't exactly know how it works, but I guess it has something to do with karma (so it's basically just like reddit). One should get one Daily Karmic Number (DKN) for each day, but when I disabled cookies I got a new karmic number every time I loaded the page. Maybe I just have bad karma or something, but I went with it.</p>
+<p>The most well known tool of applied Numerology is of course the "<em>Daily Karmic Number</em>". I don't exactly know how it works, but I guess it has something to do with karma (so it's basically just like reddit). Every person has one Daily Karmic Number (DKN) for each day, but when I disabled cookies I got a new karmic number every time I loaded the page. Maybe I just have bad karma or something, but I went with it.</p>
 <p><a href="https://www.astrology.com/us/games/game-daily-karmic-number.aspx"><img alt="Daily Karmic Number on astrology.com" src="images/astrologycom_dkn_screenshot.png"></a></p>
-<p>So I postulated that a DKN is better for you and should therefore be at the front of a sorted list. Likewise, when comparing two numbers, it should be clear that the number that appears first as a DKN should be before the other.</p>
+<p>So I postulate that if a number is your DKN it is better for you and it should therefore be at the front of a sorted list. Likewise, when comparing two numbers, it should be clear that the number that appears first as a DKN should be before the other.</p>
 <div class="highlight"><pre><span></span><span class="n">the_list</span> <span class="o">=</span> <span class="p">[</span><span class="mi">4</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">9</span><span class="p">,</span> <span class="mi">11</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span>
 <span class="n">sorted_list</span> <span class="o">=</span> <span class="p">[]</span>
 
