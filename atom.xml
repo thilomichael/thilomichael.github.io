@@ -1,5 +1,55 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>Thilo Michael</title><link href="http://thilo.co/" rel="alternate"></link><link href="http://thilo.co/atom.xml" rel="self"></link><id>http://thilo.co/</id><updated>2017-08-22T10:53:00+02:00</updated><entry><title>Hello World 2.0!</title><link href="http://thilo.co/hello-world-20.html" rel="alternate"></link><published>2017-08-22T10:53:00+02:00</published><updated>2017-08-22T10:53:00+02:00</updated><author><name>Thilo Michael</name></author><id>tag:thilo.co,2017-08-22:/hello-world-20.html</id><summary type="html">&lt;p&gt;So this blog did not receive any love from me for quite some time. That's why I decided to revamp the whole thing and now it looks completely the same! Want to read me ramble about that topic for some paragraphs? Then read on...&lt;/p&gt;
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Thilo Michael</title><link href="http://thilo.co/" rel="alternate"></link><link href="http://thilo.co/atom.xml" rel="self"></link><id>http://thilo.co/</id><updated>2017-09-26T12:50:00+02:00</updated><entry><title>AstrologySort</title><link href="http://thilo.co/astrologysort.html" rel="alternate"></link><published>2017-09-26T12:50:00+02:00</published><updated>2017-09-26T12:50:00+02:00</updated><author><name>Thilo Michael</name></author><id>tag:thilo.co,2017-09-26:/astrologysort.html</id><summary type="html">&lt;p&gt;Some days ago I was bored and searched the internet for something to do. Something productive. Naturally, I went straight to the okayest subreddit I know (&lt;a href="https://reddit.com/r/shittyprogramming"&gt;/r/shittyprogramming&lt;/a&gt;) and searched for "idea" to get the hottest news on what one might productively do. And you will never guess what I've …&lt;/p&gt;</summary><content type="html">&lt;p&gt;Some days ago I was bored and searched the internet for something to do. Something productive. Naturally, I went straight to the okayest subreddit I know (&lt;a href="https://reddit.com/r/shittyprogramming"&gt;/r/shittyprogramming&lt;/a&gt;) and searched for "idea" to get the hottest news on what one might productively do. And you will never guess what I've found... *&lt;em&gt;clickbaiting intensifies&lt;/em&gt;*&lt;/p&gt;
+&lt;!-- more --&gt;
+
+&lt;p&gt;Well, maybe you've guessed it with the help of the big fat title above this post: &lt;a href="https://www.reddit.com/r/shittyprogramming/comments/7168o5/idea_use_astrology_to_predict_branching_see_if_it/dn8mq9s/"&gt;someone suggested to use astrology for sorting&lt;/a&gt;:&lt;/p&gt;
+&lt;div class="reddit-embed" data-embed-media="www.redditmedia.com" data-embed-parent="false" data-embed-live="false" data-embed-uuid="a33077e8-f426-4688-8538-855043aa9a16" data-embed-created="2017-09-25T15:41:57.650Z"&gt;&lt;a href="https://www.reddit.com/r/shittyprogramming/comments/7168o5/idea_use_astrology_to_predict_branching_see_if_it/dn8mq9s/"&gt;Comment&lt;/a&gt; from discussion &lt;a href="https://www.reddit.com/r/shittyprogramming/comments/7168o5/idea_use_astrology_to_predict_branching_see_if_it/"&gt;Idea: use astrology to predict branching, see if it works.&lt;/a&gt;.&lt;/div&gt;
+
+&lt;script async src="https://www.redditstatic.com/comment-embed.js"&gt;&lt;/script&gt;
+
+&lt;p&gt;While the idea of using a long proven "&lt;em&gt;alternative source of truth&lt;/em&gt;" (as I like to call it), I didn't quite understand the predictions of this user concerning the runtime.&lt;/p&gt;
+&lt;p&gt;So I dusted off my vim and got to work.&lt;/p&gt;
+&lt;h2&gt;Some Research&lt;/h2&gt;
+&lt;p&gt;While thinking about how to realize an AstrologySort-algorithm, the first doubts in this project arose: &lt;em&gt;What is astrology? How could it ever be used to sort a list of numbers? How do I exit vim?&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;So, after I killed my terminal, I reflected on my scientific education and went straight to the most trustworthy source I know: Google. The complicated and precisely targeted search term "Astrology" revealed all the information needed: &lt;a href="https://astrology.com"&gt;astrology.com&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://astrology.com"&gt;&lt;img alt="A screenshot of astrology.com" src="images/astrologycom_screenshot.png"&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Almost instantly I spotted the "&lt;em&gt;Numerology&lt;/em&gt;"-section of the website. I simply knew that this was the missing key to all my questions (except the one about how to exit vim).&lt;/p&gt;
+&lt;p&gt;But something still didn't feel quite right. Not scientific enough. What I needed was hard evidence, the kind that could be cited in papers and stuff. So I looked up "&lt;em&gt;Numerology&lt;/em&gt;" in Wikipedia. And there it was: &lt;a href="https://en.wikipedia.org/wiki/Numerology"&gt;A whole Wikipedia entry on this exact topic.&lt;/a&gt;&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;It has its own Wikipedia entry, therefore it must be real.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;With this, I was ready to end the research intensive part of this project.&lt;/p&gt;
+&lt;h2&gt;The Divine Source of Numbers&lt;/h2&gt;
+&lt;p&gt;The most well known tool of applied Numerology is of course the "&lt;em&gt;Daily Karmic Number&lt;/em&gt;". I don't exactly know how it works, but I guess it has something to do with karma (so it's basically just like reddit). One should get one Daily Karmic Number (DKN) for each day, but when I disabled cookies I got a new karmic number every time I loaded the page. Maybe I just have bad karma or something, but I went with it.&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://www.astrology.com/us/games/game-daily-karmic-number.aspx"&gt;&lt;img alt="Daily Karmic Number on astrology.com" src="images/astrologycom_dkn_screenshot.png"&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;So I postulated that a DKN is better for you and should therefore be at the front of a sorted list. Likewise, when comparing two numbers, it should be clear that the number that appears first as a DKN should be before the other.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;the_list&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="mi"&gt;4&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;6&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;3&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;8&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;9&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;11&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;3&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;
+&lt;span class="n"&gt;sorted_list&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;[]&lt;/span&gt;
+
+&lt;span class="k"&gt;while&lt;/span&gt; &lt;span class="n"&gt;the_list&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+    &lt;span class="n"&gt;dkn&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;get_dkn&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
+    &lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="n"&gt;dkn&lt;/span&gt; &lt;span class="ow"&gt;in&lt;/span&gt; &lt;span class="n"&gt;the_list&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+        &lt;span class="n"&gt;sorted_list&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;append&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;dkn&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+        &lt;span class="n"&gt;the_list&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;remove&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;dkn&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;In the code example above, the &lt;code&gt;get_dkn&lt;/code&gt;-function connects to astrology.com and fetches the latest DKN.&lt;/p&gt;
+&lt;p&gt;When I tested my code I got some very unusual and unexpected results: the numbers in the list weren't &lt;em&gt;sorted&lt;/em&gt;. At least not by the definition I learned in algorithms 101.&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Sorted list:  [9, 11, 3, 8, 1, 6, 3, 4]&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;Turns out, the problem was not my implementation of the algorithm, but my expectations of it. The AstrologySort does not sort lists in a regular old-fashioned way. It sorts the numbers by &lt;em&gt;personal karmic ability&lt;/em&gt;, which is much better than all the other sorting algorithms there are!&lt;/p&gt;
+&lt;h2&gt;The Performance Test&lt;/h2&gt;
+&lt;p&gt;But the word of that one redditor still remained in my head: "&lt;em&gt;It might even be slower than BogoSort.&lt;/em&gt;"&lt;/p&gt;
+&lt;p&gt;That's why I ran some simple performance tests with BogoSort and AstrologySort. I tested with random-numbered (1 &amp;lt;= x &amp;lt;= 9) list that ranged in size from 1 to 10. I checked for the number of iterations it took and for the time.&lt;/p&gt;
+&lt;iframe width="100%" height="400" frameborder="0" scrolling="no" src="//plot.ly/~uhlomuhlo/2.embed"&gt;&lt;/iframe&gt;
+
+&lt;p&gt;And as it turns out, the redditor was right! The chart shows clearly that while bogus sort is extremely fast for small lists, it is gets exponentially worse with larger lists. On the other hand, astrology sort is very slow for small lists and for large lists.&lt;/p&gt;
+&lt;iframe width="100%" height="400" frameborder="0" scrolling="no" src="//plot.ly/~uhlomuhlo/1.embed"&gt;&lt;/iframe&gt;
+
+&lt;p&gt;The same with the number of steps to complete the sorting. While bogus sort shows its exponential behavior, astrology sort is more or less constant in the amount of steps it takes (if you look at it from far enough - and that's whats astrology is all about).&lt;/p&gt;
+&lt;p&gt;So I just presented a constant time sorting algorithm, that sorts in such a special way that the numbers aren't even ordered afterwards! A miracle? No. It's just the way astrology works.&lt;/p&gt;</content><category term="random"></category><category term="programming"></category><category term="highqualitybullshit"></category><category term="astrology"></category></entry><entry><title>Hello World 2.0!</title><link href="http://thilo.co/hello-world-20.html" rel="alternate"></link><published>2017-08-22T10:53:00+02:00</published><updated>2017-08-22T10:53:00+02:00</updated><author><name>Thilo Michael</name></author><id>tag:thilo.co,2017-08-22:/hello-world-20.html</id><summary type="html">&lt;p&gt;So this blog did not receive any love from me for quite some time. That's why I decided to revamp the whole thing and now it looks completely the same! Want to read me ramble about that topic for some paragraphs? Then read on...&lt;/p&gt;
 &lt;!-- more --&gt;
 
 &lt;h3&gt;That one time I tried to …&lt;/h3&gt;</summary><content type="html">&lt;p&gt;So this blog did not receive any love from me for quite some time. That's why I decided to revamp the whole thing and now it looks completely the same! Want to read me ramble about that topic for some paragraphs? Then read on...&lt;/p&gt;

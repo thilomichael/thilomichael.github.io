@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+      <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <title>AstrologySort</title>
+
+        <meta name="author" content="Thilo Michael">
+        <meta name="description" content="This is a blog and online business card of Thilo Michael.">
+
+        <meta name="viewport" content="width=device-width">
+        <link rel="canonical" href="http://thilo.co">
+
+        <link rel="stylesheet" href="./theme/css/screen.css" />
+
+        <link href='http://fonts.googleapis.com/css?family=Varela+Round' rel='stylesheet' type='text/css'>
+
+        <!--[if IE]>
+            <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+        <![endif]-->
+</head>
+
+<body>
+  <header style="font-family:'Varela Round',Helvetica,Arial,sans-serif;">
+      <div class="grid-wrapper">
+        <div class="grid">
+          <div class="grid__item two-fifths lap-four-sixths palm-one-whole">
+            <a href="/" class="site-title">Thilo Michael</a>
+          </div>
+          <div class="grid__item three-fifths lap-two-sixths palm-one-whole">
+          <nav>
+            <input type="checkbox" id="toggle">
+            <label for="toggle" class="toggle" data-open="Main Menu" data-close="Close Menu"></label>
+            <div>
+              <a href="/atom.xml" class="pull-right menu" style="padding-top: 30px; padding-left: 30px;">
+                <img src="./theme/images/feed.png"/>
+              </a>
+            </div>
+            <ul class="menu pull-right">
+                    <li><a href="./pages/about-me.html">About me</a></li>
+                    <li><a href="./pages/blog.html">Blog</a></li>
+                    <li><a href="./pages/publications.html">Publications</a></li>
+            </ul>
+          </nav>
+        </div>
+      </div>
+    </div>
+  </header>
+
+<div class="grid-wrapper">
+  <div class="grid grid-center">
+    <div class="grid__item two-thirds lap-one-whole palm-one-whole">
+      <article class="post">
+        <header>
+          <h1 class="title indent">
+            AstrologySort
+          </h1>
+          <div class="meta clearfix">
+          <time class="pull-left" datetime="2017-09-26 12:50:00+02:00"><i class="icon-calendar"></i> September 26, 2017</time>
+          <div class="pull-left" style="width:100%;">
+            <i class="icon-tags"></i>
+            <ul class="tags unstyled">
+              <li><a class='category' href='/tag/random.html'>random</a></li>
+              <li><a class='category' href='/tag/programming.html'>programming</a></li>
+              <li><a class='category' href='/tag/highqualitybullshit.html'>highqualitybullshit</a></li>
+              <li><a class='category' href='/tag/astrology.html'>astrology</a></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+
+        <p>Some days ago I was bored and searched the internet for something to do. Something productive. Naturally, I went straight to the okayest subreddit I know (<a href="https://reddit.com/r/shittyprogramming">/r/shittyprogramming</a>) and searched for "idea" to get the hottest news on what one might productively do. And you will never guess what I've found... *<em>clickbaiting intensifies</em>*</p>
+<!-- more -->
+
+<p>Well, maybe you've guessed it with the help of the big fat title above this post: <a href="https://www.reddit.com/r/shittyprogramming/comments/7168o5/idea_use_astrology_to_predict_branching_see_if_it/dn8mq9s/">someone suggested to use astrology for sorting</a>:</p>
+<div class="reddit-embed" data-embed-media="www.redditmedia.com" data-embed-parent="false" data-embed-live="false" data-embed-uuid="a33077e8-f426-4688-8538-855043aa9a16" data-embed-created="2017-09-25T15:41:57.650Z"><a href="https://www.reddit.com/r/shittyprogramming/comments/7168o5/idea_use_astrology_to_predict_branching_see_if_it/dn8mq9s/">Comment</a> from discussion <a href="https://www.reddit.com/r/shittyprogramming/comments/7168o5/idea_use_astrology_to_predict_branching_see_if_it/">Idea: use astrology to predict branching, see if it works.</a>.</div>
+
+<script async src="https://www.redditstatic.com/comment-embed.js"></script>
+
+<p>While the idea of using a long proven "<em>alternative source of truth</em>" (as I like to call it), I didn't quite understand the predictions of this user concerning the runtime.</p>
+<p>So I dusted off my vim and got to work.</p>
+<h2>Some Research</h2>
+<p>While thinking about how to realize an AstrologySort-algorithm, the first doubts in this project arose: <em>What is astrology? How could it ever be used to sort a list of numbers? How do I exit vim?</em></p>
+<p>So, after I killed my terminal, I reflected on my scientific education and went straight to the most trustworthy source I know: Google. The complicated and precisely targeted search term "Astrology" revealed all the information needed: <a href="https://astrology.com">astrology.com</a></p>
+<p><a href="https://astrology.com"><img alt="A screenshot of astrology.com" src="images/astrologycom_screenshot.png"></a></p>
+<p>Almost instantly I spotted the "<em>Numerology</em>"-section of the website. I simply knew that this was the missing key to all my questions (except the one about how to exit vim).</p>
+<p>But something still didn't feel quite right. Not scientific enough. What I needed was hard evidence, the kind that could be cited in papers and stuff. So I looked up "<em>Numerology</em>" in Wikipedia. And there it was: <a href="https://en.wikipedia.org/wiki/Numerology">A whole Wikipedia entry on this exact topic.</a></p>
+<blockquote>
+<p>It has its own Wikipedia entry, therefore it must be real.</p>
+</blockquote>
+<p>With this, I was ready to end the research intensive part of this project.</p>
+<h2>The Divine Source of Numbers</h2>
+<p>The most well known tool of applied Numerology is of course the "<em>Daily Karmic Number</em>". I don't exactly know how it works, but I guess it has something to do with karma (so it's basically just like reddit). One should get one Daily Karmic Number (DKN) for each day, but when I disabled cookies I got a new karmic number every time I loaded the page. Maybe I just have bad karma or something, but I went with it.</p>
+<p><a href="https://www.astrology.com/us/games/game-daily-karmic-number.aspx"><img alt="Daily Karmic Number on astrology.com" src="images/astrologycom_dkn_screenshot.png"></a></p>
+<p>So I postulated that a DKN is better for you and should therefore be at the front of a sorted list. Likewise, when comparing two numbers, it should be clear that the number that appears first as a DKN should be before the other.</p>
+<div class="highlight"><pre><span></span><span class="n">the_list</span> <span class="o">=</span> <span class="p">[</span><span class="mi">4</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">9</span><span class="p">,</span> <span class="mi">11</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span>
+<span class="n">sorted_list</span> <span class="o">=</span> <span class="p">[]</span>
+
+<span class="k">while</span> <span class="n">the_list</span><span class="p">:</span>
+    <span class="n">dkn</span> <span class="o">=</span> <span class="n">get_dkn</span><span class="p">()</span>
+    <span class="k">if</span> <span class="n">dkn</span> <span class="ow">in</span> <span class="n">the_list</span><span class="p">:</span>
+        <span class="n">sorted_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">dkn</span><span class="p">)</span>
+        <span class="n">the_list</span><span class="o">.</span><span class="n">remove</span><span class="p">(</span><span class="n">dkn</span><span class="p">)</span>
+</pre></div>
+
+
+<p>In the code example above, the <code>get_dkn</code>-function connects to astrology.com and fetches the latest DKN.</p>
+<p>When I tested my code I got some very unusual and unexpected results: the numbers in the list weren't <em>sorted</em>. At least not by the definition I learned in algorithms 101.</p>
+<blockquote>
+<p>Sorted list:  [9, 11, 3, 8, 1, 6, 3, 4]</p>
+</blockquote>
+<p>Turns out, the problem was not my implementation of the algorithm, but my expectations of it. The AstrologySort does not sort lists in a regular old-fashioned way. It sorts the numbers by <em>personal karmic ability</em>, which is much better than all the other sorting algorithms there are!</p>
+<h2>The Performance Test</h2>
+<p>But the word of that one redditor still remained in my head: "<em>It might even be slower than BogoSort.</em>"</p>
+<p>That's why I ran some simple performance tests with BogoSort and AstrologySort. I tested with random-numbered (1 &lt;= x &lt;= 9) list that ranged in size from 1 to 10. I checked for the number of iterations it took and for the time.</p>
+<iframe width="100%" height="400" frameborder="0" scrolling="no" src="//plot.ly/~uhlomuhlo/2.embed"></iframe>
+
+<p>And as it turns out, the redditor was right! The chart shows clearly that while bogus sort is extremely fast for small lists, it is gets exponentially worse with larger lists. On the other hand, astrology sort is very slow for small lists and for large lists.</p>
+<iframe width="100%" height="400" frameborder="0" scrolling="no" src="//plot.ly/~uhlomuhlo/1.embed"></iframe>
+
+<p>The same with the number of steps to complete the sorting. While bogus sort shows its exponential behavior, astrology sort is more or less constant in the amount of steps it takes (if you look at it from far enough - and that's whats astrology is all about).</p>
+<p>So I just presented a constant time sorting algorithm, that sorts in such a special way that the numbers aren't even ordered afterwards! A miracle? No. It's just the way astrology works.</p>
+
+      </article>
+    </div>
+
+<aside id="sidebar" class="grid__item one-third lap-one-whole palm-one-whole">
+  <div class="grid">
+    <section class="social aside-module grid__item one-whole lap-one-half">
+      <h1 class="title delta">
+        Follow me!
+      </h1>
+      <ul class="unstyled">
+        <li><a class="github" href="//github.com/uhlo"><i class="icon-github"></i> Github</a></li>
+        <li><a class="gplus" href="//plus.google.com/+ThiloMichael"><i class="icon-google-plus-sign"></i> Google+</a></li>
+        <li><a class="stackoverflow" href="//stackoverflow.com/users/1154311/uhlo"><i class="icon-stackexchange"></i> StackOverflow</a></li>
+        <li><a class="twitter" href="//twitter.com/uhlomuhlo"><i class="icon-twitter"></i> Twitter</a></li>
+      </ul>
+    </section>
+    <section id="recent-posts" class="aside-module grid__item one-whole lap-one-half">
+      <h1 class="title delta">Recent Posts</h1>
+      <ul class="divided">
+            <li class="post">
+              <a href="./astrologysort.html">AstrologySort</a>
+            </li>
+            <li class="post">
+              <a href="./hello-world-20.html">Hello World 2.0!</a>
+            </li>
+            <li class="post">
+              <a href="./un-interstellar-was-her.html">U.N. Interstellar was her?</a>
+            </li>
+            <li class="post">
+              <a href="./compression-distance.html">Compression Distance</a>
+            </li>
+            <li class="post">
+              <a href="./my-octopress-blog.html">My Octopress Blog</a>
+            </li>
+      </ul>
+    </section>
+    <section id="categories" class="aside-module grid__item one-whole lap-one-half">
+      <h1 class="title delta">Cagtegories</h1>
+      <ul class="divided">
+            <li class="post">
+              <a href="./category/meta.html">Meta</a>
+            </li>
+            <li class="post">
+              <a href="./category/programming.html">Programming</a>
+            </li>
+            <li class="post">
+              <a href="./category/random.html">Random</a>
+            </li>
+      </ul>
+    </section>
+  </div>
+</aside>
+  </div>
+</div>
+
+  <footer>
+    <div class="grid-wrapper">
+      <div class="grid">
+        <div class="grid__item">
+          <p class="copyright">
+            All content by Thilo Michael and licenced under <a href="//creativecommons.org/licenses/by-nc-sa/3.0/ie/">Creative Commons</a>.<br>
+          </p>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>
