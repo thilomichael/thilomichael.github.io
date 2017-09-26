@@ -7,7 +7,7 @@
 
 &lt;script async src="https://www.redditstatic.com/comment-embed.js"&gt;&lt;/script&gt;
 
-&lt;p&gt;While the idea of using a long proven "&lt;em&gt;alternative source of truth&lt;/em&gt;" (as I like to call it), I didn't quite understand the predictions of this user concerning the runtime.&lt;/p&gt;
+&lt;p&gt;While i liked the idea of using a long proven "&lt;em&gt;alternative source of truth&lt;/em&gt;" (as I like to call it) for sorting, I didn't quite understand the predictions of this user concerning the runtime.&lt;/p&gt;
 &lt;p&gt;So I dusted off my vim and got to work.&lt;/p&gt;
 &lt;h2&gt;Some Research&lt;/h2&gt;
 &lt;p&gt;While thinking about how to realize an AstrologySort-algorithm, the first doubts in this project arose: &lt;em&gt;What is astrology? How could it ever be used to sort a list of numbers? How do I exit vim?&lt;/em&gt;&lt;/p&gt;
