@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+      <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <title>A Deep Dive into rasa</title>
+
+        <meta name="author" content="Thilo Michael">
+        <meta name="description" content="This is a blog and online business card of Thilo Michael.">
+
+        <meta name="viewport" content="width=device-width">
+        <link rel="canonical" href="http://thilo.co">
+
+        <link rel="stylesheet" href="./theme/css/screen.css" />
+
+        <link href='https://fonts.googleapis.com/css?family=Varela+Round' rel='stylesheet' type='text/css'>
+
+        <!--[if IE]>
+            <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+        <![endif]-->
+</head>
+
+<body>
+  <header style="font-family:'Varela Round',Helvetica,Arial,sans-serif;">
+      <div class="grid-wrapper">
+        <div class="grid">
+          <div class="grid__item two-fifths lap-four-sixths palm-one-whole">
+            <a href="/" class="site-title">Thilo Michael</a>
+          </div>
+          <div class="grid__item three-fifths lap-two-sixths palm-one-whole">
+          <nav>
+            <input type="checkbox" id="toggle">
+            <label for="toggle" class="toggle" data-open="Main Menu" data-close="Close Menu"></label>
+            <div>
+              <a href="/atom.xml" class="pull-right menu" style="padding-top: 30px; padding-left: 30px;">
+                <img src="./theme/images/feed.png"/>
+              </a>
+            </div>
+            <ul class="menu pull-right">
+                    <li><a href="./pages/about-me.html">About me</a></li>
+                    <li><a href="./pages/blog.html">Blog</a></li>
+                    <li><a href="./pages/publications.html">Publications</a></li>
+            </ul>
+          </nav>
+        </div>
+      </div>
+    </div>
+  </header>
+
+<div class="grid-wrapper">
+  <div class="grid grid-center">
+    <div class="grid__item two-thirds lap-one-whole palm-one-whole">
+      <article class="post">
+        <header>
+          <h1 class="title indent">
+            A Deep Dive into rasa
+          </h1>
+          <div class="meta clearfix">
+          <time class="pull-left" datetime="2018-04-25 15:15:00+02:00"><i class="icon-calendar"></i> April 25, 2018</time>
+          <div class="pull-left" style="width:100%;">
+            <i class="icon-tags"></i>
+            <ul class="tags unstyled">
+              <li><a class='category' href='/tag/programming.html'>programming</a></li>
+              <li><a class='category' href='/tag/rasa.html'>rasa</a></li>
+              <li><a class='category' href='/tag/chat-bot.html'>chat-bot</a></li>
+              <li><a class='category' href='/tag/dialogue-systems.html'>dialogue systems</a></li>
+              <li><a class='category' href='/tag/machine-learning.html'>machine learning</a></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+
+        <p>With the rise of personal assistants like Siri, Google Assistant, Cortana, Alexa and how they're all called, there seems to be a great interest in chat bots, which are basically small text-based Alexas! So - exactly like 20 years ago - many companies want cool chat-bot interfaces for Facebook, WhatsApp or simply their website. That's where rasa comes into play. rasa is a startup that provides a framework for building bots utilizing the hottest and newest approaches, including <em>Machine Learning</em>™.</p>
+<!-- more -->
+
+<h2>What is rasa?</h2>
+<p>That is a difficult question. It is the startup, the "<em>platform</em>", the "<em>stack</em>", the framework. So basically it is piece of software that you can use to build chat-bots and also a company that uses that framework and other tools (as far as I understood it) to build chat-bots for companies.</p>
+<p><a href="https://rasa.com"><img alt="A screenshot of rasa.com" src="images/rasa_screenshot.png"></a></p>
+<p>The software itself, which is what I will focus on in this blog entry, is split into two projects: <strong>rasa core</strong> and <strong>rasa nlu</strong>.</p>
+<p><strong>rasa nlu</strong> handles the natural language understanding. It takes the sentences typed by the users, classifies it into one of several <em>intents</em> (i.e. what is the user intending to do?) and detects <em>entities</em> that are mentioned. So for example, when a user asks: "<em>What is the weather going to be tomorrow in Berlin?</em>" a well trained NLU could return the intent <code>weather_request</code> with the entities <code>date: "tomorrow"</code> and <code>location: "Berlin"</code>. rasa nlu uses <a href="https://spacy.io">spacy</a> under the hood and does its job very well (in my experience).</p>
+<p>The second part, <strong>rasa core</strong>, is what I will focus on in this blog post. It is basically "<em>the rest</em>" (which is probably why it's called <em>core</em>) and it is mainly to solve the task "<em>What does the system should say/do given the dialogue up until now</em>". For this, it uses a Recurrent Neural Network that gets the history of the last actions that were taken by the user as well as the system and predicts what action should be taken based on that.</p>
+<p>Just to show you how hip this framework is, let me tell you that the training data (dialogues that are used for the RNN to train on) are stored in a Markdown file and the domain is specified in YAML. But in all seriousness, this steps helps removing the barrier for newcomers to build their own bot.</p>
+<p>I recommend you to at least look at their <a href="https://core.rasa.com/tutorial_basics.html">basic tutorial</a>, where you can see that you don't have to write a single line of code to build a (very basic) bot. I think that is very impressive (of course if you want a bot that actually does something, it gets slightly more complex).</p>
+<h2>How does it work?</h2>
+<p>Damn. This is also a difficult question. In principle, the tutorials on the rasa website try to let you create bots by only showing you the parts that you really need to know. Which is good if you just want to build a bot quickly, but is not good for the deeper understanding.</p>
+<p>Throughout the tutorials one page is always linked when it gets to the interesting "under the hood" stuff. The page is titled "Plumbing - How it all fits together" and mostly consists of this image:</p>
+<p><a href="https://core.rasa.com/plumbing.html"><img alt="The &quot;Plumbing&quot; of rasa" src="https://core.rasa.com/_images/rasa_arch_colour.png"></a></p>
+<p>Sadly, this is not that informative, but let me still try to explain this image a little bit. Basically, chat-bots are a pipeline: message comes in, bot does stuff, message comes out. In this case, the message arrives at the Interpreter <code>1</code>. The Interpreter is rasa nlu and as I described above, it converts the text into something meaningful for the computer, namely an <em>intent</em> and <em>entities</em>.</p>
+<p>This information is then handed to the Tracker <code>2</code>. The Tracker is basically the control unit of the chat bot. It keeps track of what the system and user has already said, what information was given by the user (<em>slots</em> that are filled). The Tracker takes the new dialogue act together with the acts from the last few turns and hands them to the Policy <code>3</code>. The Policy is the RNN that then determines what Action <code>4</code> the bot should take. The Action does its thing (for example retrieving the weather from an API), updates the Tracker (so that the Tracker knows which Action was being executed and to update the state accordingly) and sends a message to the user <code>6</code>.</p>
+<p>That seems very simple and bots with only a few stories (i.e. training data) already work rather well. So, that's it, right?</p>
+<h2>What's a Memoization?</h2>
+<p>Digging deeper into the rasa core source code, I saw that this image is oversimplifying (duh). In the second tutorial I found the following code:</p>
+<div class="highlight"><pre><span></span><span class="n">agent</span> <span class="o">=</span> <span class="n">Agent</span><span class="p">(</span><span class="n">domain_file</span><span class="p">,</span> <span class="n">policies</span><span class="o">=</span><span class="p">[</span><span class="n">MemoizationPolicy</span><span class="p">(),</span> <span class="n">RestaurantPolicy</span><span class="p">()])</span>
+</pre></div>
+
+
+<p>This code is executed during training and it seems the the agent is given a list of policies. The <code>RestaurantPolicy</code> is a policy created in the tutorial and is basically an LSTM RNN. The <code>MemoizationPolicy</code> however is not really explained. Here is what the documentation says:</p>
+<p><a href="https://core.rasa.com/tutorial_supervised.html#a-custom-dialogue-policy"><img alt="Note: Remember, you do not need to create your own policy. The default policy setup using a memoization policy and a Keras policy works quite well. Nevertheless, you can always fine tune them for your use case. Read Plumbing - How it all fits together for more info." src="images/plumbing.png"></a></p>
+<p>The link to the Plumbing page unsurprisingly did not yield new insights. However, the picture with the one policy is not quite right.</p>
+<p>Looking at the source code for the tracker I could find the <code>PolicyEnsemble</code>, a class that can incorporate different policies (i.e. decision makers):</p>
+<div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">SimplePolicyEnsemble</span><span class="p">(</span><span class="n">PolicyEnsemble</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">policies</span><span class="p">,</span> <span class="n">known_slot_events</span><span class="o">=</span><span class="bp">None</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">(</span><span class="n">SimplePolicyEnsemble</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">policies</span><span class="p">,</span> <span class="n">known_slot_events</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">probabilities_using_best_policy</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">tracker</span><span class="p">,</span> <span class="n">domain</span><span class="p">):</span>
+        <span class="n">result</span> <span class="o">=</span> <span class="bp">None</span>
+        <span class="n">decision_maker</span> <span class="o">=</span> <span class="bp">None</span>
+        <span class="n">max_confidence</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span>
+        <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">policies</span><span class="p">:</span>
+            <span class="n">probabilities</span> <span class="o">=</span> <span class="n">p</span><span class="o">.</span><span class="n">predict_action_probabilities</span><span class="p">(</span><span class="n">tracker</span><span class="p">,</span> <span class="n">domain</span><span class="p">)</span>
+            <span class="n">confidence</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">probabilities</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">confidence</span> <span class="o">&gt;</span> <span class="n">max_confidence</span><span class="p">:</span>
+                <span class="n">max_confidence</span> <span class="o">=</span> <span class="n">confidence</span>
+                <span class="n">result</span> <span class="o">=</span> <span class="n">probabilities</span>
+                <span class="n">decision_maker</span> <span class="o">=</span> <span class="n">p</span>
+        <span class="n">logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">%s</span><span class="s2"> made the decision!&quot;</span> <span class="o">%</span> <span class="n">decision_maker</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">result</span>
+</pre></div>
+
+
+<p>So, the <code>SimplePolicyEnsemble</code> asks each policy for their probabilities given the tracker (i.e. the current state) and the domain and selects the decision of the policy with the highest confidence. Note that I added a debug output (<em>decision_maker</em>) which prints the policy that had the highest confidence, just so I could see in each turn which policy was responsible for the actions of the bot.</p>
+<p>Let's see what action probabilities the <code>MemoizationPolicy</code> is producing:</p>
+<div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">predict_action_probabilities</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">tracker</span><span class="p">,</span> <span class="n">domain</span><span class="p">):</span>
+
+        <span class="n">x</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">featurize</span><span class="p">(</span><span class="n">tracker</span><span class="p">,</span> <span class="n">domain</span><span class="p">)</span>
+        <span class="n">tracker_state</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;{}&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">e</span><span class="p">)</span>
+                         <span class="k">for</span> <span class="n">e</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">featurizer</span><span class="o">.</span><span class="n">decode</span><span class="p">(</span><span class="n">x</span><span class="p">,</span>
+                                                         <span class="n">domain</span><span class="o">.</span><span class="n">input_features</span><span class="p">)]</span>
+        <span class="n">logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s1">&#39;Current tracker state [</span><span class="se">\n\t</span><span class="s1">{}]&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
+                <span class="s2">&quot;</span><span class="se">\n\t</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">tracker_state</span><span class="p">)))</span>
+
+        <span class="n">memorised</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">recall</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">domain</span><span class="p">)</span>
+        <span class="n">result</span> <span class="o">=</span> <span class="p">[</span><span class="mf">0.0</span><span class="p">]</span> <span class="o">*</span> <span class="n">domain</span><span class="o">.</span><span class="n">num_actions</span>
+        <span class="k">if</span> <span class="n">memorised</span> <span class="ow">is</span> <span class="ow">not</span> <span class="bp">None</span> <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">is_enabled</span><span class="p">:</span>
+            <span class="n">logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s2">&quot;Used memorised next action &#39;{}&#39;&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">memorised</span><span class="p">))</span>
+            <span class="n">result</span><span class="p">[</span><span class="n">memorised</span><span class="p">]</span> <span class="o">=</span> <span class="mf">1.0</span>
+        <span class="k">return</span> <span class="n">result</span>
+</pre></div>
+
+
+<p>The <code>MemoizationPolicy</code> <em>recalls</em>, if it saw the current dialogue in the training data. If so, it returns what's in the training data with 100% confidence. That means if you stay in the "golden path" (the stories that were trained) the memoization policy does exactly what's in the training data.</p>
+<h2>Who is pulling the strings?</h2>
+<p>With the added debug output in the policy ensemble and the memoization policy, I saw that most of the time the memoization policy decided the next turn. In it self, this is not a bad thing. If a dialogue is exactly like in the training data, it is probably not a bad idea to do what the training data says.</p>
+<p>However, when I disabled the memoization policy the neural network did not perform as expected.</p>
+<div class="highlight"><pre><span></span>Input:
+&gt; hi
+
+Logging:
+2018-04-26 08:54:11 DEBUG    rasa_core.processor - Received user message &#39;hi&#39; with intent &#39;{&#39;name&#39;: &#39;greet&#39;, &#39;confidence&#39;: 0.9174638293066442}&#39; and entities &#39;[]&#39;
+2018-04-26 08:54:11 DEBUG    rasa_core.policies.ensemble - &lt;__main__.RestaurantPolicy object at 0x12d3c6438&gt; made the decision!
+2018-04-26 08:54:11 WARNING  rasa_core.processor - Circuit breaker tripped. Stopped predicting more actions for sender &#39;default&#39;
+
+Output:
+--&gt; I&#39;m on it
+--&gt; I&#39;m on it
+--&gt; I&#39;m on it
+--&gt; what kind of cuisine would you like?
+--&gt; I&#39;m on it
+--&gt; I&#39;m on it
+--&gt; I&#39;m on it
+--&gt; what kind of cuisine would you like?
+--&gt; I&#39;m on it
+--&gt; I&#39;m on it
+</pre></div>
+
+
+<p>That's not looking good. To clarify: I removed some logging messages, but in principle the bot is producing more and more actions, more and more responses until the rasa core activates a "circuit breaker" so that the bot is not stuck in an endless loop. The rasa nlu classified the input correctly (intent <code>greet</code> and no entities mentioned) and the Restaurant policy made the decision.</p>
+<p>Why is this happening? Short answer: <code>action_listen</code>. Long answer: there is a "<em>hidden</em>" action the bot can do: the listen action. After the user writes something the policy is activated again and again until it produces an <code>action_listen</code> where the bot awaits new input from the user. This way the bot is able to answer with more than one action. For example, if the user has requested to search for a restaurant, the bot can execute the action <code>action_on_it</code> - telling the user that it could take a while - and then it could execute the <code>bot.ActionSearchRestaurants</code> action.</p>
+<p>That's a neat feature, but it seems to make problems with the neural network. The network (called the <code>KerasPolicy</code>) is asked what to do next. It predicts to say "<em>I'm on it</em>", sends the message to the user and informs the tracker. The tracker then takes the update dialogue and activates the policy again. Because there is something wrong with our neural net, it again predicts the <code>action_on_it</code> action and round and round it goes.</p>
+<p>One other noteworthy case that seems to appear often is that after a users input the machine learning policy immediately predicts the <code>action_listen</code>. That way the bot simply is silent and awaits new inputs from the user.</p>
+<h2>What's next?</h2>
+<p>So the machine learning approach is not that robust and useful as it seemed! I don't want to say that it is not working, just that the parameters included in the tutorial are clearly not working out.</p>
+<p>I will try to tweak some parameters and see if I can get the system to run in a more acceptable way. I will also look into the featurization of the dialogue state. Maybe there are some insight to why the current settings are not working.</p>
+
+      </article>
+    </div>
+
+<aside id="sidebar" class="grid__item one-third lap-one-whole palm-one-whole">
+  <div class="grid">
+    <section class="social aside-module grid__item one-whole lap-one-half">
+      <h1 class="title delta">
+        Follow me!
+      </h1>
+      <ul class="unstyled">
+        <li><a class="github" href="//github.com/uhlo"><i class="icon-github"></i> Github</a></li>
+        <li><a class="gplus" href="//plus.google.com/+ThiloMichael"><i class="icon-google-plus-sign"></i> Google+</a></li>
+        <li><a class="stackoverflow" href="//stackoverflow.com/users/1154311/uhlo"><i class="icon-stackexchange"></i> StackOverflow</a></li>
+        <li><a class="twitter" href="//twitter.com/uhlomuhlo"><i class="icon-twitter"></i> Twitter</a></li>
+      </ul>
+    </section>
+    <section id="recent-posts" class="aside-module grid__item one-whole lap-one-half">
+      <h1 class="title delta">Recent Posts</h1>
+      <ul class="divided">
+            <li class="post">
+              <a href="./a-deep-dive-into-rasa.html">A Deep Dive into rasa</a>
+            </li>
+            <li class="post">
+              <a href="./astrologysort.html">AstrologySort</a>
+            </li>
+            <li class="post">
+              <a href="./hello-world-20.html">Hello World 2.0!</a>
+            </li>
+            <li class="post">
+              <a href="./un-interstellar-was-her.html">U.N. Interstellar was her?</a>
+            </li>
+            <li class="post">
+              <a href="./compression-distance.html">Compression Distance</a>
+            </li>
+            <li class="post">
+              <a href="./my-octopress-blog.html">My Octopress Blog</a>
+            </li>
+      </ul>
+    </section>
+    <section id="categories" class="aside-module grid__item one-whole lap-one-half">
+      <h1 class="title delta">Cagtegories</h1>
+      <ul class="divided">
+            <li class="post">
+              <a href="./category/dialogue.html">Dialogue</a>
+            </li>
+            <li class="post">
+              <a href="./category/meta.html">Meta</a>
+            </li>
+            <li class="post">
+              <a href="./category/programming.html">Programming</a>
+            </li>
+            <li class="post">
+              <a href="./category/random.html">Random</a>
+            </li>
+      </ul>
+    </section>
+  </div>
+</aside>
+  </div>
+</div>
+
+  <footer>
+    <div class="grid-wrapper">
+      <div class="grid">
+        <div class="grid__item">
+          <p class="copyright">
+            All content by Thilo Michael and licenced under <a href="//creativecommons.org/licenses/by-nc-sa/3.0/ie/">Creative Commons</a>.<br>
+          </p>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>
