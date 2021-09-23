@@ -84,11 +84,11 @@
 <p>No I didn't just sneezed. Campana-Keogh-1 or CK-1 for short is a neat little algorithm for measuring the distance between two images. And because no one wants to write complicated algorithms this one is very simple.</p>
 <p>The idea is to let someone else do all the work: MPEG-1. MPEG-1 is used for compressing videos and it is really good at it! One very cool feature of such video encoding algorithms is the predictive frame. When using predictive frames only the difference to the preceding image is stored. So when two following images in a video are <em>similar</em> (which is often the case in movies), MPEG-1 only has to store the pixels that differ between the two images. Very neat, huh?</p>
 <p>So what CK-1 is basically doing is to create two-frame videos. The smaller the resulting video-file the more similar the two images are. So the CK-1 algorithm basically just looks like this:</p>
-<div class="matlab highlight"><pre><span></span><code><span class="k">function</span><span class="w"> </span>distance <span class="p">=</span><span class="w"> </span><span class="nf">CK1Distance</span><span class="p">(</span>x,y<span class="p">)</span><span class="w"></span>
-<span class="w">  </span><span class="n">distance</span> <span class="p">=</span> <span class="n">mpegSize</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">)</span> <span class="o">+</span> <span class="n">mpegSize</span><span class="p">(</span><span class="n">y</span><span class="p">,</span><span class="n">x</span><span class="p">);</span>
-  <span class="n">distance</span> <span class="s">/=</span> <span class="s">mpegSize(x,x)</span> <span class="s">+</span> <span class="s">mpegSize(y,y)</span><span class="p">;</span>
-  <span class="n">distance</span> <span class="s">−=</span> <span class="s">1</span><span class="p">;</span>
-<span class="n">end</span>
+<div class="highlight"><pre><span></span><code><span class="k">function</span><span class="w"> </span>distance<span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nf">CK1Distance</span><span class="p">(</span>x,y<span class="p">)</span><span class="w"></span>
+<span class="w">  </span><span class="n">distance</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">mpegSize</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">mpegSize</span><span class="p">(</span><span class="n">y</span><span class="p">,</span><span class="n">x</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="n">distance</span><span class="w"> </span><span class="o">/</span><span class="p">=</span><span class="w"> </span><span class="n">mpegSize</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">x</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">mpegSize</span><span class="p">(</span><span class="n">y</span><span class="p">,</span><span class="n">y</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="n">distance</span><span class="w"> </span><span class="s">−=</span><span class="w"> </span><span class="s">1</span><span class="p">;</span><span class="w"></span>
+<span class="k">end</span><span class="w"></span>
 </code></pre></div>
 
 <p>The function <code>mpegSize(x,y)</code> just returns the size of an MPEG-1 video with two frames <code>x</code> and <code>y</code>. Simple as that. But the results are very nice!</p>
@@ -99,39 +99,39 @@
 </div>
 
 <p>So I took 4 screenshots of Mulder and 2 from other people in similar poses. Then I ran these images through my self-written little CK-1 Java program (because who the heck has a license for Matlab??) and these were the results:</p>
-<div class="highlight"><pre><span></span><code><span class="n">d</span><span class="p">(</span><span class="n">mulder1</span><span class="p">.</span><span class="n">png</span><span class="p">,</span><span class="n">mulder1</span><span class="p">.</span><span class="n">png</span><span class="p">)</span> <span class="o">=</span> <span class="mi">0</span><span class="p">.</span><span class="mi">0</span>
-<span class="n">d</span><span class="p">(</span><span class="n">mulder1</span><span class="p">.</span><span class="n">png</span><span class="p">,</span><span class="n">mulder2</span><span class="p">.</span><span class="n">png</span><span class="p">)</span> <span class="o">=</span> <span class="mi">0</span><span class="p">.</span><span class="mi">6300178810907466</span>
-<span class="n">d</span><span class="p">(</span><span class="n">mulder1</span><span class="p">.</span><span class="n">png</span><span class="p">,</span><span class="n">mulder3</span><span class="p">.</span><span class="n">png</span><span class="p">)</span> <span class="o">=</span> <span class="mi">0</span><span class="p">.</span><span class="mi">7965330333401515</span>
-<span class="n">d</span><span class="p">(</span><span class="n">mulder1</span><span class="p">.</span><span class="n">png</span><span class="p">,</span><span class="n">mulder4</span><span class="p">.</span><span class="n">png</span><span class="p">)</span> <span class="o">=</span> <span class="mi">0</span><span class="p">.</span><span class="mi">9076955523269439</span>
-<span class="n">d</span><span class="p">(</span><span class="n">mulder1</span><span class="p">.</span><span class="n">png</span><span class="p">,</span><span class="n">someone</span><span class="p">.</span><span class="n">png</span><span class="p">)</span> <span class="o">=</span> <span class="mi">1</span><span class="p">.</span><span class="mi">0699117676216914</span>
-<span class="n">d</span><span class="p">(</span><span class="n">mulder1</span><span class="p">.</span><span class="n">png</span><span class="p">,</span><span class="n">someone2</span><span class="p">.</span><span class="n">png</span><span class="p">)</span> <span class="o">=</span> <span class="mi">1</span><span class="p">.</span><span class="mi">1179630519282</span>
+<div class="highlight"><pre><span></span><code>d(mulder1.png,mulder1.png) = 0.0
+d(mulder1.png,mulder2.png) = 0.6300178810907466
+d(mulder1.png,mulder3.png) = 0.7965330333401515
+d(mulder1.png,mulder4.png) = 0.9076955523269439
+d(mulder1.png,someone.png) = 1.0699117676216914
+d(mulder1.png,someone2.png) = 1.1179630519282
 
-<span class="n">d</span><span class="p">(</span><span class="n">mulder2</span><span class="p">.</span><span class="n">png</span><span class="p">,</span><span class="n">mulder2</span><span class="p">.</span><span class="n">png</span><span class="p">)</span> <span class="o">=</span> <span class="mi">0</span><span class="p">.</span><span class="mi">0</span>
-<span class="n">d</span><span class="p">(</span><span class="n">mulder2</span><span class="p">.</span><span class="n">png</span><span class="p">,</span><span class="n">mulder3</span><span class="p">.</span><span class="n">png</span><span class="p">)</span> <span class="o">=</span> <span class="mi">0</span><span class="p">.</span><span class="mi">7866943866943867</span>
-<span class="n">d</span><span class="p">(</span><span class="n">mulder2</span><span class="p">.</span><span class="n">png</span><span class="p">,</span><span class="n">mulder4</span><span class="p">.</span><span class="n">png</span><span class="p">)</span> <span class="o">=</span> <span class="mi">0</span><span class="p">.</span><span class="mi">882641168355454</span>
-<span class="n">d</span><span class="p">(</span><span class="n">mulder2</span><span class="p">.</span><span class="n">png</span><span class="p">,</span><span class="n">someone</span><span class="p">.</span><span class="n">png</span><span class="p">)</span> <span class="o">=</span> <span class="mi">1</span><span class="p">.</span><span class="mi">0327691102945606</span>
-<span class="n">d</span><span class="p">(</span><span class="n">mulder2</span><span class="p">.</span><span class="n">png</span><span class="p">,</span><span class="n">someone2</span><span class="p">.</span><span class="n">png</span><span class="p">)</span> <span class="o">=</span> <span class="mi">1</span><span class="p">.</span><span class="mi">080532305920907</span>
+d(mulder2.png,mulder2.png) = 0.0
+d(mulder2.png,mulder3.png) = 0.7866943866943867
+d(mulder2.png,mulder4.png) = 0.882641168355454
+d(mulder2.png,someone.png) = 1.0327691102945606
+d(mulder2.png,someone2.png) = 1.080532305920907
 
-<span class="n">d</span><span class="p">(</span><span class="n">mulder3</span><span class="p">.</span><span class="n">png</span><span class="p">,</span><span class="n">mulder3</span><span class="p">.</span><span class="n">png</span><span class="p">)</span> <span class="o">=</span> <span class="mi">0</span><span class="p">.</span><span class="mi">0</span>
-<span class="n">d</span><span class="p">(</span><span class="n">mulder3</span><span class="p">.</span><span class="n">png</span><span class="p">,</span><span class="n">mulder4</span><span class="p">.</span><span class="n">png</span><span class="p">)</span> <span class="o">=</span> <span class="mi">0</span><span class="p">.</span><span class="mi">8846048223210854</span>
-<span class="n">d</span><span class="p">(</span><span class="n">mulder3</span><span class="p">.</span><span class="n">png</span><span class="p">,</span><span class="n">someone</span><span class="p">.</span><span class="n">png</span><span class="p">)</span> <span class="o">=</span> <span class="mi">1</span><span class="p">.</span><span class="mi">037555178268251</span>
-<span class="n">d</span><span class="p">(</span><span class="n">mulder3</span><span class="p">.</span><span class="n">png</span><span class="p">,</span><span class="n">someone2</span><span class="p">.</span><span class="n">png</span><span class="p">)</span> <span class="o">=</span> <span class="mi">0</span><span class="p">.</span><span class="mi">9344867708807609</span>
+d(mulder3.png,mulder3.png) = 0.0
+d(mulder3.png,mulder4.png) = 0.8846048223210854
+d(mulder3.png,someone.png) = 1.037555178268251
+d(mulder3.png,someone2.png) = 0.9344867708807609
 
-<span class="n">d</span><span class="p">(</span><span class="n">mulder4</span><span class="p">.</span><span class="n">png</span><span class="p">,</span><span class="n">mulder4</span><span class="p">.</span><span class="n">png</span><span class="p">)</span> <span class="o">=</span> <span class="mi">0</span><span class="p">.</span><span class="mi">0</span>
-<span class="n">d</span><span class="p">(</span><span class="n">mulder4</span><span class="p">.</span><span class="n">png</span><span class="p">,</span><span class="n">someone</span><span class="p">.</span><span class="n">png</span><span class="p">)</span> <span class="o">=</span> <span class="mi">1</span><span class="p">.</span><span class="mi">0254100592831557</span>
-<span class="n">d</span><span class="p">(</span><span class="n">mulder4</span><span class="p">.</span><span class="n">png</span><span class="p">,</span><span class="n">someone2</span><span class="p">.</span><span class="n">png</span><span class="p">)</span> <span class="o">=</span> <span class="mi">0</span><span class="p">.</span><span class="mi">9044922962687953</span>
+d(mulder4.png,mulder4.png) = 0.0
+d(mulder4.png,someone.png) = 1.0254100592831557
+d(mulder4.png,someone2.png) = 0.9044922962687953
 
-<span class="n">d</span><span class="p">(</span><span class="n">someone</span><span class="p">.</span><span class="n">png</span><span class="p">,</span><span class="n">someone</span><span class="p">.</span><span class="n">png</span><span class="p">)</span> <span class="o">=</span> <span class="mi">0</span><span class="p">.</span><span class="mi">0</span>
-<span class="n">d</span><span class="p">(</span><span class="n">someone</span><span class="p">.</span><span class="n">png</span><span class="p">,</span><span class="n">someone2</span><span class="p">.</span><span class="n">png</span><span class="p">)</span> <span class="o">=</span> <span class="mi">1</span><span class="p">.</span><span class="mi">045421475903022</span>
+d(someone.png,someone.png) = 0.0
+d(someone.png,someone2.png) = 1.045421475903022
 
-<span class="n">d</span><span class="p">(</span><span class="n">someone2</span><span class="p">.</span><span class="n">png</span><span class="p">,</span><span class="n">someone2</span><span class="p">.</span><span class="n">png</span><span class="p">)</span> <span class="o">=</span> <span class="mi">0</span><span class="p">.</span><span class="mi">0</span>
+d(someone2.png,someone2.png) = 0.0
 </code></pre></div>
 
 <p>Okay, <code>mulder1</code> and <code>mulder2</code> are almost the same images. Some basic histogram analysis would have revealed that these two images would be the most <em>similar</em>. But the fact that <code>mulder3</code> is more similar to the other Mulders than to the random persons (even if the margin is not that high) is pretty neat. The <code>mulder4</code> images seems to be more similar to <code>someone2</code> than to <code>mulder1</code> but I think that's okay if we think about how simple and fast this algorithm is.</p>
 <h3>Do some stuff!</h3>
 <p>If you want to you can try my super cool CK-1 distance calculator on your own!
 Just download it from <a href="/assets/CK1Java.jar">here</a> and run it like this:</p>
-<div class="bash highlight"><pre><span></span><code>$ java -jar CK1Java.jar /path/to/folder/with/imgs/
+<div class="highlight"><pre><span></span><code>$ java -jar CK1Java.jar /path/to/folder/with/imgs/
  - OR -
 $ java -jar CK1Jar.jar img1.png img2.png
 </code></pre></div>
