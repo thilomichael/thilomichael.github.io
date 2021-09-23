@@ -74,7 +74,6 @@
 
 <p>Well, maybe you've guessed it with the help of the big fat title above this post: <a href="https://www.reddit.com/r/shittyprogramming/comments/7168o5/idea_use_astrology_to_predict_branching_see_if_it/dn8mq9s/">someone suggested to use astrology for sorting</a>:</p>
 <div class="reddit-embed" data-embed-media="www.redditmedia.com" data-embed-parent="false" data-embed-live="false" data-embed-uuid="a33077e8-f426-4688-8538-855043aa9a16" data-embed-created="2017-09-25T15:41:57.650Z"><a href="https://www.reddit.com/r/shittyprogramming/comments/7168o5/idea_use_astrology_to_predict_branching_see_if_it/dn8mq9s/">Comment</a> from discussion <a href="https://www.reddit.com/r/shittyprogramming/comments/7168o5/idea_use_astrology_to_predict_branching_see_if_it/">Idea: use astrology to predict branching, see if it works.</a>.</div>
-
 <script async src="https://www.redditstatic.com/comment-embed.js"></script>
 
 <p>While i liked the idea of using a long proven "<em>alternative source of truth</em>" (as I like to call it) for sorting, I didn't quite understand the predictions of this user concerning the runtime.</p>
@@ -93,7 +92,7 @@
 <p>The most well known tool of applied Numerology is of course the "<em>Daily Karmic Number</em>". I don't exactly know how it works, but I guess it has something to do with karma (so it's basically just like reddit). Every person has one Daily Karmic Number (DKN) for each day, but when I disabled cookies I got a new karmic number every time I loaded the page. Maybe I just have bad karma or something, but I went with it.</p>
 <p><a href="https://www.astrology.com/us/games/game-daily-karmic-number.aspx"><img alt="Daily Karmic Number on astrology.com" src="images/astrologycom_dkn_screenshot.png"></a></p>
 <p>So I postulate that if a number is your DKN it is better for you and it should therefore be at the front of a sorted list. Likewise, when comparing two numbers, it should be clear that the number that appears first as a DKN should be before the other.</p>
-<div class="highlight"><pre><span></span><span class="n">the_list</span> <span class="o">=</span> <span class="p">[</span><span class="mi">4</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">9</span><span class="p">,</span> <span class="mi">11</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span>
+<div class="python highlight"><pre><span></span><code><span class="n">the_list</span> <span class="o">=</span> <span class="p">[</span><span class="mi">4</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">9</span><span class="p">,</span> <span class="mi">11</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span>
 <span class="n">sorted_list</span> <span class="o">=</span> <span class="p">[]</span>
 
 <span class="k">while</span> <span class="n">the_list</span><span class="p">:</span>
@@ -101,8 +100,7 @@
     <span class="k">if</span> <span class="n">dkn</span> <span class="ow">in</span> <span class="n">the_list</span><span class="p">:</span>
         <span class="n">sorted_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">dkn</span><span class="p">)</span>
         <span class="n">the_list</span><span class="o">.</span><span class="n">remove</span><span class="p">(</span><span class="n">dkn</span><span class="p">)</span>
-</pre></div>
-
+</code></pre></div>
 
 <p>In the code example above, the <code>get_dkn</code>-function connects to astrology.com and fetches the latest DKN.</p>
 <p>When I tested my code I got some very unusual and unexpected results: the numbers in the list weren't <em>sorted</em>. At least not by the definition I learned in algorithms 101.</p>

@@ -90,21 +90,20 @@
 <p>That seems very simple and bots with only a few stories (i.e. training data) already work rather well. So, that's it, right?</p>
 <h2>What's a Memoization?</h2>
 <p>Digging deeper into the rasa core source code, I saw that this image is oversimplifying (duh). In the second tutorial I found the following code:</p>
-<div class="highlight"><pre><span></span><span class="n">agent</span> <span class="o">=</span> <span class="n">Agent</span><span class="p">(</span><span class="n">domain_file</span><span class="p">,</span> <span class="n">policies</span><span class="o">=</span><span class="p">[</span><span class="n">MemoizationPolicy</span><span class="p">(),</span> <span class="n">RestaurantPolicy</span><span class="p">()])</span>
-</pre></div>
-
+<div class="python highlight"><pre><span></span><code><span class="n">agent</span> <span class="o">=</span> <span class="n">Agent</span><span class="p">(</span><span class="n">domain_file</span><span class="p">,</span> <span class="n">policies</span><span class="o">=</span><span class="p">[</span><span class="n">MemoizationPolicy</span><span class="p">(),</span> <span class="n">RestaurantPolicy</span><span class="p">()])</span>
+</code></pre></div>
 
 <p>This code is executed during training and it seems the the agent is given a list of policies. The <code>RestaurantPolicy</code> is a policy created in the tutorial and is basically an LSTM RNN. The <code>MemoizationPolicy</code> however is not really explained. Here is what the documentation says:</p>
 <p><a href="https://core.rasa.com/tutorial_supervised.html#a-custom-dialogue-policy"><img alt="Note: Remember, you do not need to create your own policy. The default policy setup using a memoization policy and a Keras policy works quite well. Nevertheless, you can always fine tune them for your use case. Read Plumbing - How it all fits together for more info." src="images/plumbing.png"></a></p>
 <p>The link to the Plumbing page unsurprisingly did not yield new insights. However, the picture with the one policy is not quite complete.</p>
 <p>Looking at the source code for the tracker I could find the <code>PolicyEnsemble</code>, a class that can incorporate different policies (i.e. decision makers). So, at each step of the dialogue multiple policies are executed and the best one gets the bid.</p>
-<div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">SimplePolicyEnsemble</span><span class="p">(</span><span class="n">PolicyEnsemble</span><span class="p">):</span>
-    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">policies</span><span class="p">,</span> <span class="n">known_slot_events</span><span class="o">=</span><span class="bp">None</span><span class="p">):</span>
+<div class="python highlight"><pre><span></span><code><span class="k">class</span> <span class="nc">SimplePolicyEnsemble</span><span class="p">(</span><span class="n">PolicyEnsemble</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">policies</span><span class="p">,</span> <span class="n">known_slot_events</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
         <span class="nb">super</span><span class="p">(</span><span class="n">SimplePolicyEnsemble</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">policies</span><span class="p">,</span> <span class="n">known_slot_events</span><span class="p">)</span>
 
     <span class="k">def</span> <span class="nf">probabilities_using_best_policy</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">tracker</span><span class="p">,</span> <span class="n">domain</span><span class="p">):</span>
-        <span class="n">result</span> <span class="o">=</span> <span class="bp">None</span>
-        <span class="n">decision_maker</span> <span class="o">=</span> <span class="bp">None</span>
+        <span class="n">result</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="n">decision_maker</span> <span class="o">=</span> <span class="kc">None</span>
         <span class="n">max_confidence</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span>
         <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">policies</span><span class="p">:</span>
             <span class="n">probabilities</span> <span class="o">=</span> <span class="n">p</span><span class="o">.</span><span class="n">predict_action_probabilities</span><span class="p">(</span><span class="n">tracker</span><span class="p">,</span> <span class="n">domain</span><span class="p">)</span>
@@ -115,54 +114,51 @@
                 <span class="n">decision_maker</span> <span class="o">=</span> <span class="n">p</span>
         <span class="n">logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">%s</span><span class="s2"> made the decision!&quot;</span> <span class="o">%</span> <span class="n">decision_maker</span><span class="p">)</span>
         <span class="k">return</span> <span class="n">result</span>
-</pre></div>
-
+</code></pre></div>
 
 <p>The <code>SimplePolicyEnsemble</code> asks each policy for their probabilities given the tracker (i.e. the current state) and the domain and selects the decision of the policy with the highest confidence. Note that I added a debug output (<em>decision_maker</em>) which prints the policy that had the highest confidence, just so I could see in each turn which policy was responsible for the actions of the bot.</p>
 <p>Let's see what action probabilities the <code>MemoizationPolicy</code> is producing:</p>
-<div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">predict_action_probabilities</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">tracker</span><span class="p">,</span> <span class="n">domain</span><span class="p">):</span>
+<div class="python highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">predict_action_probabilities</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">tracker</span><span class="p">,</span> <span class="n">domain</span><span class="p">):</span>
 
         <span class="n">x</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">featurize</span><span class="p">(</span><span class="n">tracker</span><span class="p">,</span> <span class="n">domain</span><span class="p">)</span>
-        <span class="n">tracker_state</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;{}&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">e</span><span class="p">)</span>
+        <span class="n">tracker_state</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;</span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">e</span><span class="p">)</span>
                          <span class="k">for</span> <span class="n">e</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">featurizer</span><span class="o">.</span><span class="n">decode</span><span class="p">(</span><span class="n">x</span><span class="p">,</span>
                                                          <span class="n">domain</span><span class="o">.</span><span class="n">input_features</span><span class="p">)]</span>
-        <span class="n">logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s1">&#39;Current tracker state [</span><span class="se">\n\t</span><span class="s1">{}]&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
+        <span class="n">logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s1">&#39;Current tracker state [</span><span class="se">\n\t</span><span class="si">{}</span><span class="s1">]&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
                 <span class="s2">&quot;</span><span class="se">\n\t</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">tracker_state</span><span class="p">)))</span>
 
         <span class="n">memorised</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">recall</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">domain</span><span class="p">)</span>
         <span class="n">result</span> <span class="o">=</span> <span class="p">[</span><span class="mf">0.0</span><span class="p">]</span> <span class="o">*</span> <span class="n">domain</span><span class="o">.</span><span class="n">num_actions</span>
-        <span class="k">if</span> <span class="n">memorised</span> <span class="ow">is</span> <span class="ow">not</span> <span class="bp">None</span> <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">is_enabled</span><span class="p">:</span>
-            <span class="n">logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s2">&quot;Used memorised next action &#39;{}&#39;&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">memorised</span><span class="p">))</span>
+        <span class="k">if</span> <span class="n">memorised</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">is_enabled</span><span class="p">:</span>
+            <span class="n">logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s2">&quot;Used memorised next action &#39;</span><span class="si">{}</span><span class="s2">&#39;&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">memorised</span><span class="p">))</span>
             <span class="n">result</span><span class="p">[</span><span class="n">memorised</span><span class="p">]</span> <span class="o">=</span> <span class="mf">1.0</span>
         <span class="k">return</span> <span class="n">result</span>
-</pre></div>
-
+</code></pre></div>
 
 <p>The <code>MemoizationPolicy</code> <em>recalls</em>, if it saw the current dialogue in the training data. If so, it returns what's in the training data with 100% confidence. That means if you stay in the "golden path" (the stories that were trained) the memoization policy does exactly what's in the training data.</p>
 <h2>Who is pulling the strings?</h2>
 <p>With the added debug output in the policy ensemble and the memoization policy, I saw that most of the time the memoization policy decided the next turn. In it self, this is not a bad thing. If a dialogue is exactly like in the training data, it is probably not a bad idea to do what the training data says.</p>
 <p>However, when I disabled the memoization policy the neural network did not perform as expected.</p>
-<div class="highlight"><pre><span></span>Input:
-&gt; hi
+<div class="highlight"><pre><span></span><code><span class="k">Input</span><span class="p">:</span>
+<span class="o">&gt;</span> <span class="n">hi</span>
 
-Logging:
-2018-04-26 08:54:11 DEBUG    rasa_core.processor - Received user message &#39;hi&#39; with intent &#39;{&#39;name&#39;: &#39;greet&#39;, &#39;confidence&#39;: 0.9174638293066442}&#39; and entities &#39;[]&#39;
-2018-04-26 08:54:11 DEBUG    rasa_core.policies.ensemble - &lt;__main__.RestaurantPolicy object at 0x12d3c6438&gt; made the decision!
-2018-04-26 08:54:11 WARNING  rasa_core.processor - Circuit breaker tripped. Stopped predicting more actions for sender &#39;default&#39;
+<span class="n">Logging</span><span class="p">:</span>
+<span class="mi">2018</span><span class="o">-</span><span class="mi">04</span><span class="o">-</span><span class="mi">26</span> <span class="mi">08</span><span class="p">:</span><span class="mi">54</span><span class="p">:</span><span class="mi">11</span> <span class="n">DEBUG</span>    <span class="n">rasa_core</span><span class="p">.</span><span class="n">processor</span> <span class="o">-</span> <span class="n">Received</span> <span class="k">user</span> <span class="n">message</span> <span class="s1">&#39;hi&#39;</span> <span class="k">with</span> <span class="n">intent</span> <span class="s1">&#39;{&#39;</span><span class="n">name</span><span class="s1">&#39;: &#39;</span><span class="n">greet</span><span class="s1">&#39;, &#39;</span><span class="n">confidence</span><span class="s1">&#39;: 0.9174638293066442}&#39;</span> <span class="k">and</span> <span class="n">entities</span> <span class="s1">&#39;[]&#39;</span>
+<span class="mi">2018</span><span class="o">-</span><span class="mi">04</span><span class="o">-</span><span class="mi">26</span> <span class="mi">08</span><span class="p">:</span><span class="mi">54</span><span class="p">:</span><span class="mi">11</span> <span class="n">DEBUG</span>    <span class="n">rasa_core</span><span class="p">.</span><span class="n">policies</span><span class="p">.</span><span class="n">ensemble</span> <span class="o">-</span> <span class="o">&lt;</span><span class="n">__main__</span><span class="p">.</span><span class="n">RestaurantPolicy</span> <span class="k">object</span> <span class="k">at</span> <span class="mi">0</span><span class="n">x12d3c6438</span><span class="o">&gt;</span> <span class="n">made</span> <span class="n">the</span> <span class="n">decision</span><span class="o">!</span>
+<span class="mi">2018</span><span class="o">-</span><span class="mi">04</span><span class="o">-</span><span class="mi">26</span> <span class="mi">08</span><span class="p">:</span><span class="mi">54</span><span class="p">:</span><span class="mi">11</span> <span class="n">WARNING</span>  <span class="n">rasa_core</span><span class="p">.</span><span class="n">processor</span> <span class="o">-</span> <span class="n">Circuit</span> <span class="n">breaker</span> <span class="n">tripped</span><span class="p">.</span> <span class="n">Stopped</span> <span class="n">predicting</span> <span class="k">more</span> <span class="n">actions</span> <span class="k">for</span> <span class="n">sender</span> <span class="s1">&#39;default&#39;</span>
 
-Output:
---&gt; I&#39;m on it
---&gt; I&#39;m on it
---&gt; I&#39;m on it
---&gt; what kind of cuisine would you like?
---&gt; I&#39;m on it
---&gt; I&#39;m on it
---&gt; I&#39;m on it
---&gt; what kind of cuisine would you like?
---&gt; I&#39;m on it
---&gt; I&#39;m on it
-</pre></div>
-
+<span class="k">Output</span><span class="p">:</span>
+<span class="c1">--&gt; I&#39;m on it</span>
+<span class="c1">--&gt; I&#39;m on it</span>
+<span class="c1">--&gt; I&#39;m on it</span>
+<span class="c1">--&gt; what kind of cuisine would you like?</span>
+<span class="c1">--&gt; I&#39;m on it</span>
+<span class="c1">--&gt; I&#39;m on it</span>
+<span class="c1">--&gt; I&#39;m on it</span>
+<span class="c1">--&gt; what kind of cuisine would you like?</span>
+<span class="c1">--&gt; I&#39;m on it</span>
+<span class="c1">--&gt; I&#39;m on it</span>
+</code></pre></div>
 
 <p>That's not looking good. To clarify: I removed some logging messages, but in principle the bot is producing more and more actions, more and more responses until the rasa core activates a "circuit breaker" so that the bot is not stuck in an endless loop. The rasa nlu classified the input correctly (intent <code>greet</code> and no entities mentioned) and the Restaurant policy made the decision.</p>
 <p>Why is this happening? Short answer: <code>action_listen</code>. Long answer: there is a "<em>hidden</em>" action the bot can do: the listen action. After the user writes something the policy is activated again and again until it produces an <code>action_listen</code> where the bot awaits new input from the user. This way the bot is able to answer with more than one action. For example, if the user has requested to search for a restaurant, the bot can execute the action <code>action_on_it</code> - telling the user that it could take a while - and then it could execute the <code>bot.ActionSearchRestaurants</code> action.</p>

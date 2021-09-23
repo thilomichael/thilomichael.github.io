@@ -74,20 +74,18 @@
 
 <h3>CMF instead of CMS</h3>
 <p>Octopress is a content management framework, not a content management system. What that means in practice is that you would create a new blog entry with a rake task on your commandline like this:</p>
-<div class="highlight"><pre><span></span>$ rake new_post<span class="o">[</span><span class="s2">&quot;My octopress blog&quot;</span><span class="o">]</span>
-</pre></div>
-
+<div class="bash highlight"><pre><span></span><code>$ rake new_post<span class="o">[</span><span class="s2">&quot;My octopress blog&quot;</span><span class="o">]</span>
+</code></pre></div>
 
 <p>This command simply creates a markdown-file with some attributes predefined:</p>
-<div class="highlight"><pre><span></span>---
-layout: post
-title: &quot;My octopress blog&quot;
-date: 2014-07-30 17:36:44 +0200
-comments: true
-categories:
----
-</pre></div>
-
+<div class="highlight"><pre><span></span><code><span class="err">---</span>
+<span class="c">layout: post</span>
+<span class="c">title: &quot;My octopress blog&quot;</span>
+<span class="c">date: 2014-07-30 17:36:44 +0200</span>
+<span class="c">comments: true</span>
+<span class="c">categories:</span>
+<span class="err">---</span>
+</code></pre></div>
 
 <p>Below these attributes you can write your blog entry in markdown (with some cool octopress features included). If you want to <em>manage</em> your posts you can add an <code>author</code> or a <code>published</code> field. Because it's markdown you can easily inject some HTML into your post.</p>
 <p>That's it. No user management, no unnecessary back-end menus. I really like it :)</p>
